@@ -28,7 +28,7 @@ public class ReceptModule extends Module{
     }
 
     @Override
-    public void doRun(Entity e) {
+    public void doRun() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

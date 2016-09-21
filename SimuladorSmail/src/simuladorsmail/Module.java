@@ -14,12 +14,12 @@ package simuladorsmail;
 public abstract class Module {
     Module next;
     Module prev;
-    
+    Entity atual;
     
     public abstract void receiveEnt(Entity e);
     public void sendEnt(Entity e){
         next.receiveEnt(e);
     }
-    public abstract void doRun(Entity e);
+    public abstract void doRun();
     public abstract void register();
 }

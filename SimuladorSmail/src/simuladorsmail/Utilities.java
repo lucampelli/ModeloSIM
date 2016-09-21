@@ -51,6 +51,9 @@ public abstract class Utilities {
     
     
     //Equações
+    public static float EXPO(float E){
+        return rand.nextFloat();
+    }
     public static float NORM(float M, float DP){
         return rand.nextFloat();
     }
