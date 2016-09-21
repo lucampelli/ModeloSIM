@@ -32,5 +32,13 @@ Dúvida Tabela 5!
 import java.util.ArrayList;
 
 public class ServiceModule{
+    
+    private ArrayList filaDeServico;
+    
+    public ServiceModule(){
+        
+    }
+    
+    
 
 }
