@@ -20,6 +20,21 @@ Dúvida Tabela 5!
 
 
 
-public class ReceptModule {
+public class ReceptModule extends Module{
+
+    @Override
+    public void receiveEnt(Entity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void doRun(Entity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void register() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

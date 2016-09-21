@@ -18,6 +18,21 @@ total e de cada tipo de entidade e seus resultados.
 //Numero de Sucessos: int NumSucessos;
 //Numero de Adiamentos: int NumAdiamentos;
 
-public class EndEntity {
+public class EndEntity extends Module{
+
+    @Override
+    public void receiveEnt(Entity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void doRun(Entity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void register() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

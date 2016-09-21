@@ -29,7 +29,8 @@ Dúvida Tabela 5!
 
 // ArrayListDeEntidades: Fila de serviço
 // Quantidade de servidoes internos
+import java.util.ArrayList;
 
-public class ServiceModule {
-    
+public class ServiceModule{
+
 }

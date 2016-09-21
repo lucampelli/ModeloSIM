@@ -19,7 +19,35 @@ Local |EXPO (0,5)
 Remota|EXPO (0,6)
 */
 //Número de Chegadas: int[Tipos] NumChegadas;[total][QuantTipo1][QuantTipo2][...];
+import java.util.Random;
 
-public class StartEntity {
+public class StartEntity extends Module{
+
+    private float periodo;
+    private int criados;
+    private int maxCriacao;
+    private Random rand;
+    
+    public StartEntity(int maxCriacao, int periodo){
+        periodo = periodo;
+        criados = 0;
+        maxCriacao = maxCriacao;
+        rand = new Random();
+    }
+    
+    @Override
+    public void receiveEnt(Entity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void doRun(Entity e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void register() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
