@@ -52,7 +52,7 @@ public abstract class Utilities {
     
     //Equações
     public static float EXPO(float E){
-        return rand.nextFloat();
+        return rand.nextFloat() * 10;
     }
     public static float NORM(float M, float DP){
         return rand.nextFloat();

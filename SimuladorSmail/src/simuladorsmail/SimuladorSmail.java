@@ -12,13 +12,12 @@ package simuladorsmail;
 /*
 Classe inicializadora do sistema
 */
-
 public class SimuladorSmail {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         new Sistema();
     }
     

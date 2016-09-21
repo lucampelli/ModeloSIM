@@ -18,8 +18,11 @@ public abstract class Module {
     
     public abstract void receiveEnt(Entity e);
     public void sendEnt(Entity e){
-        next.receiveEnt(e);
+        if(next != null)
+            next.receiveEnt(e);
     }
     public abstract void doRun();
     public abstract void register();
+    public abstract void setNext(Module next);
+    public abstract void setPrev(Module prev);
 }

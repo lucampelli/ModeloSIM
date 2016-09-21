@@ -35,7 +35,7 @@ public class StartEntity extends Module{
         criados = 0;
         this.maxCriacao = maxCriacao;
         rand = new Random();
-        
+        doRun();
     }
     
     @Override
@@ -44,12 +44,11 @@ public class StartEntity extends Module{
     }
 
     @Override
-    public void doRun() {
-        int i = 0;
-        nextRem += Utilities.EXPO(0.6f);                                        //Schedule next creation
-        nextLoc += Utilities.EXPO(0.5f);                                        //Schedule next creation
-        
-        while(i <= maxCriacao && Utilities.getTempo() <= maxPlayTime){
+    public void doRun() {                                       //Schedule next creation
+        System.out.println("Rem:" + nextRem);
+        System.out.println("Loc:" + nextLoc);
+        System.out.println(Utilities.getTempo());
+        if(criados <= maxCriacao){
             char rem;                                                           //Remetente
             
             if(Utilities.getTempo() >= nextRem){                                //Bateu horario de criar nova entidade com destinatario remoto
@@ -60,7 +59,9 @@ public class StartEntity extends Module{
                 } else {                                                        //Chance aleatória de o remetente ser local 1/3 ou remoto 2/3
                     rem = 'l';
                 }
-                atual = new Entity('r',rem);                                    //cria nova mensagem                                    
+                atual = new Entity('r',rem);                                    //cria nova mensagem     
+                System.out.println("Atual destinatario " + atual.getDestiantario());
+                System.out.println("Atual remetente " + atual.getRemetente());
                 criados++;
                 sendEnt(atual);                                                 //envia
             }
@@ -75,11 +76,11 @@ public class StartEntity extends Module{
                 }
                 atual = new Entity('l',rem);                                    //cria nova mensagem
                 criados++;
+                System.out.println("Atual destinatario " + atual.getDestiantario());
+                System.out.println("Atual remetente " + atual.getRemetente());
                 sendEnt(atual);                                                 //envia
             }   
-            if(maxCriacao > 0){
-                i++;
-            }
+            
             atual = null;                                                       //nulifica o atual
         }
         register();                                                             //quando terminar registra tudo
@@ -87,7 +88,19 @@ public class StartEntity extends Module{
 
     @Override
     public void register() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setNext(Module next) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void setPrev(Module prev) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
 }
