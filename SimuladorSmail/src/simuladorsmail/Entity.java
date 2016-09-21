@@ -21,5 +21,59 @@ Entidade do sistema, armazena informações nescessárias para a simulação.
 //Tempo no Sistema;
 
 public class Entity {
+    private char destinatario;
+    private char remetente;
+    private int adiamentos;
+    private boolean falha;
+    private boolean sucesso;
+    private int tempoNoSistema;
     
+    public Entity(char destinatario, char remetente){
+        this.destinatario = destinatario;
+        this.remetente = remetente;
+    }
+    
+    public char getDestiantario(){
+        return destinatario;
+    }
+    
+    public char getRemetente(){
+        return remetente;
+    }
+    
+    public int getAdiamentos(){
+        return adiamentos;
+    }
+    
+    public boolean getFalha(){
+        return falha;
+    }
+    
+    public boolean getSucesso(){
+        return sucesso;
+    }
+    
+    public int getTempoNoSistema(){
+        return tempoNoSistema;
+    }
+    
+    public void setDestinatario(char input){
+        this.destinatario = input;
+    }
+    
+    public void setRemetente(char input){
+        this.remetente = input;
+    }
+    
+    public void addAdiamentos(){
+        adiamentos ++;
+    }
+    
+    public void falha(){
+        falha = true;
+    }
+    
+    public void sucesso(){
+        sucesso = true;
+    }
 }
