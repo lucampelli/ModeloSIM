@@ -10,6 +10,8 @@ package simuladorsmail;
  * @author Abrams
  */
 
+import java.util.Random;
+
 /*
 Guarda o tempo atual e possui os geradores de números aleatórios.
 */
@@ -20,6 +22,7 @@ public abstract class Utilities {
     private static int tempoAtual = 0;
     private static char unit = 'h'; //horas, minutos, segundos.
     private static float delayAmount = 0;
+    private static Random rand = new Random();
     
     public static int getTempo(){
         return tempoAtual;
@@ -44,14 +47,18 @@ public abstract class Utilities {
     public static void setDelayAmount(float delay){
         delayAmount = delay;
     }
+    
+    
+    
+    //Equações
     public static float NORM(float M, float DP){
-        return 0f;
+        return rand.nextFloat();
     }
     public static float TRIA(float S, float MID, float E){
-        return 0f;
+        return rand.nextFloat();
     }
     public static float UNIF(float U, float S){
-        return 0f;
+        return rand.nextFloat();
     }
     public static float CONST(float cons){
         return cons;

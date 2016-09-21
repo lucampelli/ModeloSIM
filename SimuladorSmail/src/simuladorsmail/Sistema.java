@@ -5,10 +5,8 @@
  */
 package simuladorsmail;
 
-/**
- *
- * @author Luca
- */
+//For testing purposes, or maybe not
+
 public class Sistema {
     public Sistema(){
         System.out.println(Utilities.CONST(15));
