@@ -25,7 +25,7 @@ public class Sistema {
     public Sistema(){
         filaDeEventos = new ArrayList<Evento>();
         se = new StartEntity(this);
-        rm = new ReceptModule();
+        rm = new ReceptModule(this);
         sml = new ServiceModule(this);
         smr = new ServiceModule(this);
         ee = new EndEntity();
