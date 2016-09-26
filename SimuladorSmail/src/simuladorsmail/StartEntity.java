@@ -30,21 +30,7 @@ public class StartEntity extends Module{
         sisRef = sis;
         rand = new Random();
     }
-    
-    @Override
-    public void receiveEnt(Entity e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void doRun() {
-    
-    }
-
-    @Override
-    public void register() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
     public Entity createEvent(boolean local){

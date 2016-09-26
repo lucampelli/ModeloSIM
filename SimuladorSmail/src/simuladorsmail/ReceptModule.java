@@ -28,21 +28,6 @@ public class ReceptModule extends Module{
         sisRef = sis;
     }
 
-    @Override
-    public void receiveEnt(Entity e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void doRun() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void register() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public void createEvent(Entity e){
         ServiceModule m = sisRef.getServiceModule(e.getDestiantario() == 'l');
         sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), m, e);

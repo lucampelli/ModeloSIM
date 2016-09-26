@@ -12,15 +12,5 @@ package simuladorsmail;
 
 //SuperClasse
 public abstract class Module {
-    Module next;
-    Module prev;
-    Entity atual;
-    
-    public abstract void receiveEnt(Entity e);
-    public void sendEnt(Entity e){
-        if(next != null)
-            next.receiveEnt(e);
-    }
-    public abstract void doRun();
-    public abstract void register();
+
 }
