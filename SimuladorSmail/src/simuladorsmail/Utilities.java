@@ -54,6 +54,11 @@ public abstract class Utilities {
         return (float) ((-1/E) * Math.log(1 - rand.nextFloat()));
     }
     public static float NORM(float M, float DP){
+        float random1 = rand.nextFloat();
+        float random2 = rand.nextFloat();
+        float Z = (float) (Math.sqrt((-2 * Math.log((double)random1))) * Math.cos(2* Math.PI * random2));
+        
+        
         return rand.nextFloat() * 10;
     }
     public static float TRIA(float a, float b, float c){
