@@ -35,7 +35,7 @@ public abstract class Utilities {
     }
     public static void proxTempo(int skip){
         tempoAnterior = tempoAtual;
-        tempoAtual += skip;
+        tempoAtual = skip;
     }
     public static int getTempoAnt(){
         return tempoAnterior;

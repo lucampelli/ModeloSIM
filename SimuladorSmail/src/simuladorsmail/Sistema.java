@@ -25,8 +25,8 @@ public class Sistema {
         }
     }
     
-    public void createEvent(Evento.tipoDeEvento tipo, int tempo){
-        filaDeEventos.add(new Evento(tipo,tempo));
+    public void createEvent(Evento.tipoDeEvento tipo, int tempo, Module r){
+        filaDeEventos.add(new Evento(tipo,tempo,r));
     }
     
     public Evento getNextEvent(){
@@ -40,7 +40,8 @@ public class Sistema {
                 tempo = e.getTempo();
             }
         }
-        
+        Utilities.proxTempo(tempo);
+        filaDeEventos.remove(chosen);
         return chosen;
     }
 }

@@ -11,14 +11,20 @@ package simuladorsmail;
  */
 public class Evento {
     
-    public static enum tipoDeEvento {CRIACAOL,CRIACAOR,SELECAO,FILA,SERVICO,ADIAMENTO,SAIDA} 
+    public static enum tipoDeEvento {CRIACAOL,CRIACAOR,SELECAO,FILA,SERVICO,ADIAMENTO,SAIDA,SEIZE,RELEASE} 
     private int tempo = 0;
     private tipoDeEvento tipo;
+    private Module responsa;
     
     
-    public Evento (tipoDeEvento Tipo, int tempo){
+    public Evento (tipoDeEvento Tipo, int tempo, Module responsavel){
         this.tipo = Tipo;
         this.tempo = tempo;
+        this.responsa = responsavel;
+    }
+    
+    public Module getResponsavel(){
+        return responsa;
     }
     
     public tipoDeEvento getTipo(){
