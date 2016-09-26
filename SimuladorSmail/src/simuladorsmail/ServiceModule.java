@@ -31,8 +31,10 @@ Dúvida Tabela 5!
 // Quantidade de servidoes internos
 import java.util.ArrayList;
 
-public class ServiceModule{
-    
+
+public class ServiceModule extends Module{
+    int servidoresOcupados = 0;
+    int quantidadeDeServidores = 10;
     private ArrayList<Entity> filaDeServico;
     private Sistema sisRef;
     
@@ -40,6 +42,21 @@ public class ServiceModule{
         sisRef = sis;
         filaDeServico = new ArrayList<Entity>();
     }
+    
+    public void createEventEntrada(Entity entidade){
+        if(servidoresOcupados <= quantidadeDeServidores){
+            //Gera tempoPocessamento:
+            
+        }else{
+            //InsereNaFila
+            filaDeServico.add(entidade);
+        }
+    }
+    
+    public void createEventSaida(){
+        
+    }
+    
     
     
 

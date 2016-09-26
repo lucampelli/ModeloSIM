@@ -24,9 +24,11 @@ public class Entity {
     private char destinatario;
     private char remetente;
     private int adiamentos;
+    private boolean adiamento;
     private boolean falha;
     private boolean sucesso;
-    private int tempoNoSistema;
+    private float tempoDoProximoEvento;
+    private float tempoNoSistema;
     
     public Entity(char destinatario, char remetente){
         this.destinatario = destinatario;
@@ -45,6 +47,10 @@ public class Entity {
         return adiamentos;
     }
     
+    public boolean getAdiamento(){
+        return adiamento;
+    }
+    
     public boolean getFalha(){
         return falha;
     }
@@ -53,8 +59,12 @@ public class Entity {
         return sucesso;
     }
     
-    public int getTempoNoSistema(){
+    public float getTempoNoSistema(){
         return tempoNoSistema;
+    }
+    
+    public float getTempoDoProximoEvento(){
+        return tempoDoProximoEvento;
     }
     
     public void setDestinatario(char input){
@@ -69,11 +79,27 @@ public class Entity {
         adiamentos ++;
     }
     
+    public void setAdiamento(boolean add){
+        adiamento = add;
+    }
+    
     public void falha(){
         falha = true;
     }
     
     public void sucesso(){
         sucesso = true;
+    }
+    
+    public void setTempoNoSistema(float tempo){
+        tempoNoSistema = tempo;
+    }
+    
+    public void addTempoNoSistema(float tempo){
+        tempoNoSistema += tempo;
+    }
+    
+    public void setTempoDoProximoEvento(float tempo){
+        tempoDoProximoEvento = tempo;
     }
 }
