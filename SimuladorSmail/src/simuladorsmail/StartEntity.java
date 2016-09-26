@@ -37,7 +37,9 @@ public class StartEntity extends Module{
     }
 
     @Override
-    public void doRun() {    }
+    public void doRun() {
+    
+    }
 
     @Override
     public void register() {
@@ -45,7 +47,7 @@ public class StartEntity extends Module{
     }
     
     
-    public Entity createEntity(boolean local){
+    public Entity createEvent(boolean local){
         Entity newE;
         boolean random = rand.nextBoolean();
         if(local){
@@ -54,13 +56,17 @@ public class StartEntity extends Module{
             } else {
                 newE = new Entity('l','l');
             }
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.getTempo() + Utilities.EXPO(0.5f)), this, null);
         } else {
             if(random){
                 newE = new Entity('r','r');
             } else {
                 newE = new Entity('r','l');
             }
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOR,(Utilities.getTempo() + Utilities.EXPO(0.6f)), this, null);
         }
+        
+        sisRef.createEvent(Evento.tipoDeEvento.SELECAO, Utilities.getTempo(), null, newE);
         
         return newE;
         

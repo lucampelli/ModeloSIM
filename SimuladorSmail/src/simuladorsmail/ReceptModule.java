@@ -21,6 +21,12 @@ Dúvida Tabela 5!
 
 
 public class ReceptModule extends Module{
+    
+    private Sistema sisRef;
+    
+    public ReceptModule(Sistema sis){
+        sisRef = sis;
+    }
 
     @Override
     public void receiveEnt(Entity e) {
@@ -37,5 +43,9 @@ public class ReceptModule extends Module{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public void createEvent(Entity e){
+        ServiceModule m = sisRef.getServiceModule(e.getDestiantario() == 'l');
+        sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), m, e);
+    }
     
 }

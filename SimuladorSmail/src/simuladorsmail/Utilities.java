@@ -19,26 +19,20 @@ Guarda o tempo atual e possui os geradores de números aleatórios.
 //Tempo Atual: int tempoAtual;
 
 public abstract class Utilities {
-    private static int tempoAnterior = 0;
-    private static int tempoAtual = 0;
+    private static float tempoAtual = 0;
     public static enum unit {HORAS,MINUTOS,SEGUNDOS};
     private static unit timeUnit = unit.HORAS; 
     private static float delayAmount = 0;
     private static Random rand = new Random();   
     
-    public static int getTempo(){
+    public static float getTempo(){
         return tempoAtual;
     }
     public static void proxTempo(){
-        tempoAnterior = tempoAtual;
         tempoAtual++;
     }
-    public static void proxTempo(int skip){
-        tempoAnterior = tempoAtual;
+    public static void proxTempo(float skip){
         tempoAtual = skip;
-    }
-    public static int getTempoAnt(){
-        return tempoAnterior;
     }
     public static void setUnit(unit newUnit){
         timeUnit = newUnit;

@@ -11,16 +11,18 @@ package simuladorsmail;
  */
 public class Evento {
     
-    public static enum tipoDeEvento {CRIACAOL,CRIACAOR,SELECAO,FILA,SERVICO,ADIAMENTO,SAIDA,SEIZE,RELEASE} 
-    private int tempo = 0;
+    public static enum tipoDeEvento {CRIACAOL,CRIACAOR,SELECAO,SERVICO,SAIDA,FINAL} 
+    private float tempo = 0;
     private tipoDeEvento tipo;
     private Module responsa;
+    private Entity entidade;
     
     
-    public Evento (tipoDeEvento Tipo, int tempo, Module responsavel){
+    public Evento (tipoDeEvento Tipo, float tempo, Module responsavel, Entity e){
         this.tipo = Tipo;
         this.tempo = tempo;
         this.responsa = responsavel;
+        this.entidade = e;
     }
     
     public Module getResponsavel(){
@@ -31,8 +33,12 @@ public class Evento {
         return tipo;
     }
     
-    public int getTempo(){
+    public float getTempo(){
         return tempo;
+    }
+    
+    public Entity getEntity(){
+        return entidade;
     }
     
 }
