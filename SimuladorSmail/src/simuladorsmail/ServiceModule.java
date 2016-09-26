@@ -33,10 +33,12 @@ import java.util.ArrayList;
 
 public class ServiceModule{
     
-    private ArrayList filaDeServico;
+    private ArrayList<Entity> filaDeServico;
+    private Sistema sisRef;
     
-    public ServiceModule(){
-        
+    public ServiceModule(Sistema sis){
+        sisRef = sis;
+        filaDeServico = new ArrayList<Entity>();
     }
     
     

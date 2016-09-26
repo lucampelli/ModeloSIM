@@ -8,23 +8,39 @@ package simuladorsmail;
 //For testing purposes, or maybe not
 
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
 public class Sistema {
+    
+    public ArrayList<Evento> filaDeEventos;
+    
     public Sistema(){
-        int maxPlayTime = 100;
-        StartEntity e1 = new StartEntity(10);
-        while(Utilities.getTempo() < maxPlayTime){
-            e1.doRun();
-            Utilities.proxTempo();
-            try {
-                sleep(100);
-            } catch (InterruptedException ex) {
-               ex.printStackTrace();
+        filaDeEventos = new ArrayList<Evento>();
+        
+        while (!filaDeEventos.isEmpty()){
+            
+        }
+    }
+    
+    public void createEvent(Evento.tipoDeEvento tipo, int tempo){
+        filaDeEventos.add(new Evento(tipo,tempo));
+    }
+    
+    public Evento getNextEvent(){
+        
+        Evento chosen = filaDeEventos.get(0);
+        int tempo = chosen.getTempo();
+        
+        for(Evento e : filaDeEventos){
+            if(e.getTempo() < tempo){
+                chosen = e;
+                tempo = e.getTempo();
             }
         }
         
+        return chosen;
     }
 }

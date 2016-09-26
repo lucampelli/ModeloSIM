@@ -10,6 +10,7 @@ package simuladorsmail;
  * @author Abrams
  */
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /*
@@ -20,9 +21,10 @@ Guarda o tempo atual e possui os geradores de números aleatórios.
 public abstract class Utilities {
     private static int tempoAnterior = 0;
     private static int tempoAtual = 0;
-    private static char unit = 'h'; //horas, minutos, segundos.
+    public static enum unit {HORAS,MINUTOS,SEGUNDOS};
+    private static unit timeUnit = unit.HORAS; 
     private static float delayAmount = 0;
-    private static Random rand = new Random();
+    private static Random rand = new Random();   
     
     public static int getTempo(){
         return tempoAtual;
@@ -38,30 +40,32 @@ public abstract class Utilities {
     public static int getTempoAnt(){
         return tempoAnterior;
     }
-    public static void setUnit(char newUnit){
-        unit = newUnit;
+    public static void setUnit(unit newUnit){
+        timeUnit = newUnit;
     }
-    public static char getUnit(){
-        return unit;
-    }
-    public static void setDelayAmount(float delay){
-        delayAmount = delay;
+    public static unit getUnit(){
+        return timeUnit;
     }
     
     
     
     //Equações
     public static float EXPO(float E){
-        return rand.nextFloat() * 10;
+        return (float) ((-1/E) * Math.log(1 - rand.nextFloat()));
     }
     public static float NORM(float M, float DP){
-        return rand.nextFloat();
+        return rand.nextFloat() * 10;
     }
-    public static float TRIA(float S, float MID, float E){
-        return rand.nextFloat();
+    public static float TRIA(float a, float b, float c){
+        float random = rand.nextFloat();
+        if(random < ((c-a)/(b-a))){
+            return (float)(a + Math.sqrt(random*(b-a)*(c-a)));
+        } else {
+            return (float)(c - Math.sqrt((1-random)*(c-b)*(c-a)));
+        }
     }
-    public static float UNIF(float U, float S){
-        return rand.nextFloat();
+    public static float UNIF(float a, float b){
+        return a + rand.nextFloat() * (b-a);
     }
     public static float CONST(float cons){
         return cons;
