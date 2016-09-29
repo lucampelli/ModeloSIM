@@ -48,7 +48,7 @@ public class ServiceModule extends Module {
 
     public void createEventEntrada(Entity entidade) {
         if (servidoresOcupados <= quantidadeDeServidores) {
-            //Gera tempoPocessamento:
+            //Gera tempoPocessamento e chances de sucesso fracaso ou adiamento!
             float ts = 0;//Utilities.TS();
             entidade.setTempoDoProximoEvento(Utilities.getTempo() + ts);
             entidade.setTempoNaFila(Utilities.getTempo());
@@ -64,18 +64,18 @@ public class ServiceModule extends Module {
     public void createEventSaida(Entity entidade) {
         //sucesso/Fracasso/Adiamento
 
-        if (true) {//Adiamento
+        if (entidade.getAdiamento()) {//Adiamento
             entidade.setAdiamento(true);
             entidade.addAdiamentos();
             createEventEntrada(entidade);
             servidoresOcupados--;
         }
-        if (true) {//Fracasso
+        if (entidade.getFalha()) {//Fracasso
             entidade.falha();
             sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), this, entidade);//Enviar para EndEntity
             servidoresOcupados--;
         }
-        if (true) {//Sucesso
+        if (entidade.getSucesso()) {//Sucesso
             entidade.sucesso();
             sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), this, entidade);//enviar para EndEntity
             servidoresOcupados--;
