@@ -47,6 +47,19 @@ public abstract class Utilities {
     public static unit getUnit() {
         return timeUnit;
     }
+    
+    public static void setDestiny(Entity e){
+        int dest = rand.nextInt(3);
+        if(dest == 0){
+            e.setAdiamento(true);
+        }
+        if(dest == 1){
+            e.falha();
+        }
+        if(dest == 2){
+            e.sucesso();
+        }
+    }
 
     public static float getTESR(Entity e) {
         if (e.getRemetente() == 'l') {

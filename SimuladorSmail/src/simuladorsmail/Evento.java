@@ -17,18 +17,12 @@ public class Evento {
     }
     private float tempo = 0;
     private tipoDeEvento tipo;
-    private Module responsa;
     private Entity entidade;
 
-    public Evento(tipoDeEvento Tipo, float tempo, Module responsavel, Entity e) {
+    public Evento(tipoDeEvento Tipo, float tempo, Entity e) {
         this.tipo = Tipo;
         this.tempo = tempo;
-        this.responsa = responsavel;
         this.entidade = e;
-    }
-
-    public Module getResponsavel() {
-        return responsa;
     }
 
     public tipoDeEvento getTipo() {

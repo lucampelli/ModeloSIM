@@ -29,6 +29,7 @@ public class ReceptModule extends Module{
     }
 
     public void createEvent(Entity e){
+        Utilities.setDestiny(e);
         ServiceModule m = sisRef.getServiceModule(e.getDestinatario() == 'l');
         sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo() + Utilities.getTESR(e), m, e);
     }
