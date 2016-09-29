@@ -20,6 +20,9 @@ total e de cada tipo de entidade e seus resultados.
 
 public class EndEntity extends Module{
 
+    public void Register(Entity e){
+        
+    }
 
 
 }

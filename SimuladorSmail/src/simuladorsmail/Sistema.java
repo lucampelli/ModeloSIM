@@ -92,6 +92,7 @@ public class Sistema {
             }
         }
         if (e.getTipo() == Evento.tipoDeEvento.FINAL) {
+            ee.Register(e.getEntity());
             System.out.println("Dispose Event");
         }
     }
