@@ -62,23 +62,16 @@ public class ServiceModule extends Module {
     }
 
     public void createEventSaida(Entity entidade) {
-        //sucesso/Fracasso/Adiamento
-
+        if (entidade.getFalha() || entidade.getSucesso()) {//Fracasso || Sucesso
+            sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), this, entidade);//Enviar para EndEntity
+            servidoresOcupados--;
+            return;
+        }
         if (entidade.getAdiamento()) {//Adiamento
-            entidade.setAdiamento(true);
             entidade.addAdiamentos();
             createEventEntrada(entidade);
             servidoresOcupados--;
-        }
-        if (entidade.getFalha()) {//Fracasso
-            entidade.falha();
-            sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), this, entidade);//Enviar para EndEntity
-            servidoresOcupados--;
-        }
-        if (entidade.getSucesso()) {//Sucesso
-            entidade.sucesso();
-            sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), this, entidade);//enviar para EndEntity
-            servidoresOcupados--;
+            return;
         }
 
     }
