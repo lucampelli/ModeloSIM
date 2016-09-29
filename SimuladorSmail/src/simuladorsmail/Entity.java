@@ -37,7 +37,7 @@ public class Entity {
         this.remetente = remetente;
     }
 
-    public char getDestiantario() {
+    public char getDestinatario() {
         return destinatario;
     }
 

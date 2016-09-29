@@ -48,6 +48,104 @@ public abstract class Utilities {
         return timeUnit;
     }
 
+    public static float getTESR(Entity e) {
+        if (e.getRemetente() == 'l') {
+            if (e.getDestinatario() == 'l') {
+                if (e.getSucesso()) {
+                    return 0.12f;
+                }
+                if (e.getAdiamento()) {
+                    return 0.11f;
+                }
+                if (e.getFalha()) {
+                    return 0.14f;
+                }
+            } else {
+                if (e.getSucesso()) {
+                    return 0.12f;
+                }
+                if (e.getAdiamento()) {
+                    return 0.15f;
+                }
+                if (e.getFalha()) {
+                    return 0.13f;
+                }
+            }
+        } else {
+            if (e.getDestinatario() == 'l') {
+                if (e.getSucesso()) {
+                    return 0.12f;
+                }
+                if (e.getAdiamento()) {
+                    return 0.11f;
+                }
+                if (e.getFalha()) {
+                    return 0.14f;
+                }
+            } else {
+                if (e.getSucesso()) {
+                    return 0.16f;
+                }
+                if (e.getAdiamento()) {
+                    return 0.16f;
+                }
+                if (e.getFalha()) {
+                    return 0.13f;
+                }
+            }
+        }
+        return 0.10f;
+    }
+
+    public static float getTESS(Entity e) {
+        if (e.getRemetente() == 'l') {
+            if (e.getDestinatario() == 'l') {
+                if (e.getSucesso()) {
+                    NORM(0.55f, 0.05f);
+                }
+                if (e.getAdiamento()) {
+                    UNIF(0.06f, 0.15f);
+                }
+                if (e.getFalha()) {
+                    TRIA(0.02f, 0.05f, 0.012f);
+                }
+            } else {
+                if (e.getSucesso()) {
+                    NORM(0.65f, 0.04f);
+                }
+                if (e.getAdiamento()) {
+                    TRIA(0.05f, 0.07f, 0.010f);
+                }
+                if (e.getFalha()) {
+                    UNIF(0.16f, 0.25f);
+                }
+            }
+        } else {
+            if (e.getDestinatario() == 'l') {
+                if (e.getSucesso()) {
+                    UNIF(0.03f, 011f);
+                }
+                if (e.getAdiamento()) {
+                    NORM(0.72f, 0.09f);
+                }
+                if (e.getFalha()) {
+                    NORM(0.46f, 0.05f);
+                }
+            } else {
+                if (e.getSucesso()) {
+                    UNIF(0.09f, 0.18f);
+                }
+                if (e.getAdiamento()) {
+                    NORM(0.63f, 0.04f);
+                }
+                if (e.getFalha()) {
+                    TRIA(0.08f, 0.15f, 0.022f);
+                }
+            }
+        }
+        return 0.20f;
+    }
+
     //Equações
     public static float EXPO(float E) {
         return (float) ((-1 / E) * Math.log(1 - rand.nextFloat()));
