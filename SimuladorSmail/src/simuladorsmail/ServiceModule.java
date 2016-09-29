@@ -47,15 +47,14 @@ public class ServiceModule extends Module {
     }
 
     public void createEventEntrada(Entity entidade) {
-        if (servidoresOcupados <= quantidadeDeServidores) {
+        if (servidoresOcupados < quantidadeDeServidores) {
             //Gera tempoPocessamento e chances de sucesso fracaso ou adiamento!
-            float ts = 0;//Utilities.TS();
-            entidade.setTempoDoProximoEvento(Utilities.getTempo() + ts);
+            float ts = Utilities.getTESS(entidade);//Utilities.TS();
             entidade.setTempoNaFila(Utilities.getTempo());
-            sisRef.createEvent(Evento.tipoDeEvento.SAIDA, Utilities.getTempo() + ts, this, entidade);
+            sisRef.createEvent(Evento.tipoDeEvento.SAIDA, Utilities.getTempo() + ts, entidade);
+            servidoresOcupados++;
         } else {
             //InsereNaFila
-            servidoresOcupados++;
             entidade.setTempoEntradaFila(Utilities.getTempo()); //Passar tempo atual!
             filaDeServico.add(entidade);
         }
@@ -63,17 +62,28 @@ public class ServiceModule extends Module {
 
     public void createEventSaida(Entity entidade) {
         if (entidade.getFalha() || entidade.getSucesso()) {//Fracasso || Sucesso
-            sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), this, entidade);//Enviar para EndEntity
+            sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), entidade);//Enviar para EndEntity
             servidoresOcupados--;
+            if (!filaDeServico.isEmpty()) {
+                sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), filaDeServico.remove(0));
+            }
+            if(entidade.getFalha()){
+                System.out.println("Fail");
+            }
+            if(entidade.getSucesso()){
+                System.out.println("Sucesso");
+            }
             return;
         }
         if (entidade.getAdiamento()) {//Adiamento
             entidade.addAdiamentos();
             createEventEntrada(entidade);
             servidoresOcupados--;
+            if (!filaDeServico.isEmpty()) {
+                sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), filaDeServico.remove(0));
+            }
+            System.out.println("Adiado");
             return;
         }
-
     }
-
 }

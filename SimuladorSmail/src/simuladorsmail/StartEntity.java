@@ -42,17 +42,17 @@ public class StartEntity extends Module{
             } else {
                 newE = new Entity('l','l');
             }
-            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.getTempo() + Utilities.EXPO(0.5f)), this, null);
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.getTempo() + Utilities.EXPO(0.5f)), null);
         } else {
             if(random){
                 newE = new Entity('r','r');
             } else {
                 newE = new Entity('r','l');
             }
-            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOR,(Utilities.getTempo() + Utilities.EXPO(0.6f)), this, null);
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOR,(Utilities.getTempo() + Utilities.EXPO(0.6f)), null);
         }
         
-        sisRef.createEvent(Evento.tipoDeEvento.SELECAO, Utilities.getTempo(), null, newE);
+        sisRef.createEvent(Evento.tipoDeEvento.SELECAO, Utilities.getTempo(), newE);
         
         return newE;
         

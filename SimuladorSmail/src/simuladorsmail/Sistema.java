@@ -73,13 +73,26 @@ public class Sistema {
             System.out.println("Receipt Event");
         }
         if (e.getTipo() == Evento.tipoDeEvento.SERVICO) {
+            if (e.getEntity().getDestinatario() == 'l') {
+                sml.createEventEntrada(e.getEntity());
+                System.out.println("Entry Event Local");
+            } else {
+                smr.createEventEntrada(e.getEntity());
+                System.out.println("Entry Event Remote");
+            }
             
         }
         if (e.getTipo() == Evento.tipoDeEvento.SAIDA) {
-
+            if (e.getEntity().getDestinatario() == 'l') {
+                sml.createEventSaida(e.getEntity());
+                System.out.println("Exit Event Local");
+            } else {
+                smr.createEventSaida(e.getEntity());
+                System.out.println("Exit Event Remote");
+            }
         }
         if (e.getTipo() == Evento.tipoDeEvento.FINAL) {
-
+            System.out.println("Dispose Event");
         }
     }
 

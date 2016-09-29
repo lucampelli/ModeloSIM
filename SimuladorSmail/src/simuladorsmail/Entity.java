@@ -27,7 +27,6 @@ public class Entity {
     private boolean adiamento;
     private boolean falha;
     private boolean sucesso;
-    private float tempoDoProximoEvento;
     private float tempoNoSistema;
     private float tempoEntradaNaFila;
     private float tempoNaFila;
@@ -65,10 +64,6 @@ public class Entity {
         return tempoNoSistema;
     }
 
-    public float getTempoDoProximoEvento() {
-        return tempoDoProximoEvento;
-    }
-
     public float getTempoFila() {
         return tempoNaFila;
     }
@@ -103,10 +98,6 @@ public class Entity {
 
     public void addTempoNoSistema(float tempo) {
         tempoNoSistema += tempo;
-    }
-
-    public void setTempoDoProximoEvento(float tempo) {
-        tempoDoProximoEvento = tempo;
     }
 
     public void setTempoEntradaFila(float tempo) {
