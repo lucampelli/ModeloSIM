@@ -34,6 +34,8 @@ public class Sistema {
         createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.EXPO(0.6f), null, null);
         
         while (!filaDeEventos.isEmpty()){
+            System.out.println("TempoAtual :" + Utilities.getTempo());
+            printFilaDeEventos();
             Evento atual = getNextEvent();
             Run(atual);
         }
@@ -83,7 +85,7 @@ public class Sistema {
     
     public void printFilaDeEventos(){
         for(Evento e : filaDeEventos){
-            System.out.println();
+            System.out.println(e.getTipo() + ", " + e.getTempo());
         }
     }
     
