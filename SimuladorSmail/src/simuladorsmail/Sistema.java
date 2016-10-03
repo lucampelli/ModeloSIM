@@ -28,9 +28,9 @@ public class Sistema {
         smr = new ServiceModule(this);
         ee = new EndEntity();
 
-        GUI.Input input = new GUI.Input();
-        input.setVisible(true);
-        input.setSis(this);
+        GUI.Inicial inicial = new GUI.Inicial();
+        inicial.setVisible(true);
+        inicial.setSis(this);
     }
     
     public void start(){
@@ -144,6 +144,11 @@ public class Sistema {
     public void setServerNum(int num){
         sml.setServerNum(num);
         smr.setServerNum(num);
+    }
+    
+    public void END(){
+        ee.END();
+        System.exit(0);
     }
     
 }

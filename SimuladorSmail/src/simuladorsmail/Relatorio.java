@@ -40,7 +40,7 @@ public abstract class Relatorio {
      ]
      */
 
-    public void geraRelatorio(float[] valores) {
+    public static void geraRelatorio(float[] valores) {
         try {
             Scanner ler = new Scanner(System.in);
 
