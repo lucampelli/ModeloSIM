@@ -160,6 +160,8 @@ public class Input extends JFrame {
 
         jLabel19.setText("Quantia de Centros de Processamento em cada Servidor:");
 
+        jTextField17.setText("10");
+
         jLabel20.setText("TEC-Local:");
 
         jTextField18.setText("EXPO(0.5)");
@@ -430,6 +432,8 @@ public class Input extends JFrame {
         sis.setSucPropsLR(lrProps);
         sis.setSucPropsRL(rlProps);
         sis.setSucPropsRR(rrProps);
+        
+        sis.setServerNum(Integer.parseInt(jTextField17.getText()));
         
         sis.start();
     }//GEN-LAST:event_jButton1ActionPerformed

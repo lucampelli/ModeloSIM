@@ -36,8 +36,8 @@ public class ServiceModule extends Module {
 
         ADIAMENTO, FRACASSO, SUCESSO
     };
-    int servidoresOcupados = 0;
-    final int quantidadeDeServidores = 10;
+    private int servidoresOcupados = 0;
+    private int quantidadeDeServidores = 10;
     private ArrayList<Entity> filaDeServico;
     private Sistema sisRef;
 
@@ -86,5 +86,9 @@ public class ServiceModule extends Module {
             System.out.println("Adiado");
             return;
         }
+    }
+    
+    public void setServerNum(int num){
+        this.quantidadeDeServidores = num;
     }
 }

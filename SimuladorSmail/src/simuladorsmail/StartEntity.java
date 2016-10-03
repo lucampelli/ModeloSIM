@@ -23,8 +23,8 @@ import java.util.Random;
 
 public class StartEntity extends Module{
 
-    Sistema sisRef;
-    Random rand;
+    private Sistema sisRef;
+    private Random rand;
     
     public StartEntity(Sistema sis){
         sisRef = sis;

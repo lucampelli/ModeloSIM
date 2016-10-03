@@ -41,7 +41,7 @@ public class Sistema {
             System.out.println("TempoAtual :" + Utilities.getTempo());
             printFilaDeEventos();
             Evento atual = getNextEvent();
-            Run(atual);
+            RunEvent(atual);
         }
     }
 
@@ -65,7 +65,7 @@ public class Sistema {
         return chosen;
     }
 
-    public void Run(Evento e) {
+    public void RunEvent(Evento e) {
         if (e.getTipo() == Evento.tipoDeEvento.CRIACAOL) {
             se.createEvent(true);
             System.out.println("Criacao Local");
@@ -140,6 +140,10 @@ public class Sistema {
     }
     public void setSucPropsRR(float[] prop){
         Utilities.setSucPropsRR(prop);
+    }
+    public void setServerNum(int num){
+        sml.setServerNum(num);
+        smr.setServerNum(num);
     }
     
 }
