@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import simuladorsmail.Sistema;
@@ -100,11 +102,27 @@ public class Input extends JFrame {
 
         jLabel6.setText("Remoto-Remoto:");
 
+        jTextField1.setText("50");
+
+        jTextField2.setText("25");
+
+        jTextField3.setText("15");
+
+        jTextField4.setText("10");
+
         jLabel7.setText("Sucesso:");
 
         jLabel8.setText("Fracasso:");
 
         jLabel9.setText("Adiamento:");
+
+        jTextField5.setText("87");
+
+        jTextField6.setText("0.5");
+
+        jTextField7.setText("12.5");
+
+        jTextField8.setText("2.5");
 
         jLabel10.setText("Sucesso:");
 
@@ -112,23 +130,48 @@ public class Input extends JFrame {
 
         jLabel12.setText("Adiamento:");
 
+        jTextField9.setText("96");
+
+        jTextField10.setText("1.5");
+
         jLabel13.setText("Sucesso:");
+
+        jTextField11.setText("1");
 
         jLabel14.setText("Adiamento:");
 
+        jTextField12.setText("3");
+
         jLabel15.setText("Fracasso:");
+
+        jTextField13.setText("96");
 
         jLabel16.setText("Adiamento:");
 
         jLabel17.setText("Sucesso:");
 
+        jTextField14.setText("90");
+
+        jTextField15.setText("1");
+
         jLabel18.setText("Fracasso:");
+
+        jTextField16.setText("9");
 
         jLabel19.setText("Quantia de Centros de Processamento em cada Servidor:");
 
         jLabel20.setText("TEC-Local:");
 
+        jTextField18.setText("EXPO(0.5)");
+
         jLabel21.setText("TEC-Remoto:");
+
+        jTextField19.setText("EXPO(0.6)");
+        jTextField19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField19ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -346,9 +389,65 @@ public class Input extends JFrame {
         this.setVisible(false);
         sis.setTECL((int)parseEQ(jTextField18.getText()), parseParams(jTextField18.getText()));
         sis.setTECR((int)parseEQ(jTextField19.getText()), parseParams(jTextField19.getText()));
+        float[] upperParams = new float[4];
+        upperParams[0] = Float.parseFloat(jTextField1.getText()); //ll
+        upperParams[1] = Float.parseFloat(jTextField2.getText()); //lr
+        upperParams[2] = Float.parseFloat(jTextField3.getText()); //rl
+        upperParams[3] = Float.parseFloat(jTextField4.getText()); //rr
+        sis.setProps(upperParams);
+        
+        float[] llProps = new float[3];
+        llProps[0] = Float.parseFloat(jTextField5.getText());
+        llProps[1] = Float.parseFloat(jTextField6.getText());
+        llProps[2] = Float.parseFloat(jTextField7.getText());
+        
+        float[] lrProps = new float[3];
+        lrProps[0] = Float.parseFloat(jTextField9.getText());
+        lrProps[1] = Float.parseFloat(jTextField10.getText());
+        lrProps[2] = Float.parseFloat(jTextField8.getText());
+        
+        float[] rlProps = new float[3];
+        rlProps[0] = Float.parseFloat(jTextField13.getText());
+        rlProps[1] = Float.parseFloat(jTextField12.getText());
+        rlProps[2] = Float.parseFloat(jTextField11.getText());
+        
+        float[] rrProps = new float[3];
+        rrProps[0] = Float.parseFloat(jTextField14.getText());
+        rrProps[1] = Float.parseFloat(jTextField15.getText());
+        rrProps[2] = Float.parseFloat(jTextField16.getText());
+        
+        try {
+            checkSum(llProps);
+            checkSum(lrProps);
+            checkSum(rlProps);
+            checkSum(rrProps);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        
+        sis.setSucPropsLL(llProps);
+        sis.setSucPropsLR(lrProps);
+        sis.setSucPropsRL(rlProps);
+        sis.setSucPropsRR(rrProps);
+        
         sis.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField19ActionPerformed
+
+    private void checkSum(float[] prop) throws Exception{
+        float sum = 0;
+        for(int i = 0; i < prop.length; i++){
+            sum += prop[i];
+        }
+        if(sum != 100){
+            throw new Exception("A proporção acumulada deve ser 1");
+        }
+    }
+    
     private float parseEQ(String eq){
         
         String[] splits = eq.split("\\(");

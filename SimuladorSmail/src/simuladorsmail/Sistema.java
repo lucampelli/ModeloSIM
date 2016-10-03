@@ -129,4 +129,17 @@ public class Sistema {
        Utilities.setProps(props);
     }
     
+    public void setSucPropsLL(float[] prop){
+        Utilities.setSucPropsLL(prop);
+    }
+    public void setSucPropsLR(float[] prop){
+        Utilities.setSucPropsLR(prop);
+    }
+    public void setSucPropsRL(float[] prop){
+        Utilities.setSucPropsRL(prop);
+    }
+    public void setSucPropsRR(float[] prop){
+        Utilities.setSucPropsRR(prop);
+    }
+    
 }

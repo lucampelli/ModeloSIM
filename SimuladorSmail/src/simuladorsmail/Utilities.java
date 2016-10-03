@@ -57,8 +57,11 @@ public abstract class Utilities {
     }
 
     public static void setDestiny(Entity e) {
-        float dest = rand.nextFloat();
         
+        e.setAdiamento(false);
+        
+        float dest = rand.nextFloat();
+        //System.out.println("dest " + dest);
         float[] central;
         
         if(e.getDestinatario() == 'l'){
@@ -75,14 +78,17 @@ public abstract class Utilities {
             }
         }
         
-        if (dest < central[0]) {
-            e.setAdiamento(true);
-        }
-        if (dest < central[1] + central[0]) {
-            e.falha();
-        }
-        if (dest < central[2] + central[1] + central[0]) {
+        if (dest < central[0]/100) {
             e.sucesso();
+            return;
+        }
+        if (dest < (central[1] + central[0])/100) {
+            e.falha();
+            return;
+        }
+        if (dest < (central[2] + central[1] + central[0])/100) {
+            e.setAdiamento(true);
+            return;
         }
     }
 
@@ -216,16 +222,16 @@ public abstract class Utilities {
 
     public static String nextCreation() {
         float r = rand.nextFloat();
-        if (r < props[0]) {
+        if (r < props[0]/100) {
             return "ll";
         }
-        if (r < props[1] + props[0]) {
+        if (r < (props[1] + props[0])/100) {
             return "lr";
         }
-        if (r < props[2] + props[1] + props[0]) {
+        if (r < (props[2] + props[1] + props[0])/100) {
             return "rl";
         }
-        if (r < props[3] + props[2] + props[1] + props[0]) {
+        if (r < (props[3] + props[2] + props[1] + props[0])/100) {
             return "rr";
         }
         return "ll";

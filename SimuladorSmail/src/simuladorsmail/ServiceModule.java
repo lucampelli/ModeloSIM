@@ -78,6 +78,7 @@ public class ServiceModule extends Module {
         if (entidade.getAdiamento()) {//Adiamento
             entidade.addAdiamentos();
             createEventEntrada(entidade);
+            Utilities.setDestiny(entidade);
             servidoresOcupados--;
             if (!filaDeServico.isEmpty()) {
                 sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), filaDeServico.remove(0));
