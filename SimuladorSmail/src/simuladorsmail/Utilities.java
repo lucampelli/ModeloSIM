@@ -9,7 +9,6 @@ package simuladorsmail;
  *
  * @author Abrams
  */
-import java.util.ArrayList;
 import java.util.Random;
 
 /*
@@ -19,6 +18,15 @@ import java.util.Random;
 public abstract class Utilities {
 
     private static float tempoAtual = 0;
+    private static int creationLEq = 0;
+    private static float[] creationLParam = new float[3];
+    private static int creationREq = 0;
+    private static float[] creationRParam = new float[3];
+    private static float[] props = new float[4];   //[ll, lr, rl, rr]
+    private static float[] sucPropsLL = new float[3]; //[s, f, a]
+    private static float[] sucPropsLR = new float[3]; //[s, f, a]
+    private static float[] sucPropsRL = new float[3]; //[s, f, a]
+    private static float[] sucPropsRR = new float[3]; //[s, f, a]
 
     public static enum unit {
 
@@ -47,16 +55,33 @@ public abstract class Utilities {
     public static unit getUnit() {
         return timeUnit;
     }
-    
-    public static void setDestiny(Entity e){
-        int dest = rand.nextInt(3);
-        if(dest == 0){
+
+    public static void setDestiny(Entity e) {
+        float dest = rand.nextFloat();
+        
+        float[] central;
+        
+        if(e.getDestinatario() == 'l'){
+            if(e.getRemetente() == 'l'){
+                central = sucPropsLL;
+            } else {
+                central = sucPropsLR;
+            }
+        } else {
+            if(e.getRemetente() == 'l'){
+                central = sucPropsRL;
+            } else {
+                central = sucPropsRR;
+            }
+        }
+        
+        if (dest < central[0]) {
             e.setAdiamento(true);
         }
-        if(dest == 1){
+        if (dest < central[1] + central[0]) {
             e.falha();
         }
-        if(dest == 2){
+        if (dest < central[2] + central[1] + central[0]) {
             e.sucesso();
         }
     }
@@ -159,12 +184,86 @@ public abstract class Utilities {
         return 0.20f;
     }
 
+    public static float nextCreationTime(boolean local) {
+        if (local) {
+            switch (creationLEq) {
+                case 0:
+                    return tempoAtual + EXPO(creationLParam[0]);
+                case 1:
+                    return tempoAtual + NORM(creationLParam[0], creationLParam[1]);
+                case 2:
+                    return tempoAtual + TRIA(creationLParam[0], creationLParam[1], creationLParam[2]);
+                case 3:
+                    return tempoAtual + UNIF(creationLParam[0], creationLParam[1]);
+                default:
+                    return tempoAtual + CONS(creationLParam[0]);
+            }
+        } else {
+            switch (creationREq) {
+                case 0:
+                    return tempoAtual + EXPO(creationRParam[0]);
+                case 1:
+                    return tempoAtual + NORM(creationRParam[0], creationRParam[1]);
+                case 2:
+                    return tempoAtual + TRIA(creationRParam[0], creationRParam[1], creationRParam[2]);
+                case 3:
+                    return tempoAtual + UNIF(creationRParam[0], creationRParam[1]);
+                default:
+                    return tempoAtual + CONS(creationRParam[0]);
+            }
+        }
+    }
+
+    public static String nextCreation() {
+        float r = rand.nextFloat();
+        if (r < props[0]) {
+            return "ll";
+        }
+        if (r < props[1] + props[0]) {
+            return "lr";
+        }
+        if (r < props[2] + props[1] + props[0]) {
+            return "rl";
+        }
+        if (r < props[3] + props[2] + props[1] + props[0]) {
+            return "rr";
+        }
+        return "ll";
+    }
+
+    public static void setCreationLTimes(int eq, float[] param) {
+        creationLEq = eq;
+        creationLParam = param;
+    }
+    
+    public static void setCreationRTimes(int eq, float[] param) {
+        creationREq = eq;
+        creationRParam = param;
+    }
+
+    public static void setProps(float[] prop) {
+        props = prop;
+    }
+    
+    public static void setSucPropsLL(float[] prop){
+        sucPropsLL = prop;
+    }
+    public static void setSucPropsLR(float[] prop){
+        sucPropsLR = prop;
+    }
+    public static void setSucPropsRL(float[] prop){
+        sucPropsRL = prop;
+    }
+    public static void setSucPropsRR(float[] prop){
+        sucPropsRR = prop;
+    }
+
     //Equações
-    public static float EXPO(float E) {
+    public static float EXPO(float E) { //0
         return (float) ((-1 / E) * Math.log(1 - rand.nextFloat()));
     }
 
-    public static float NORM(float M, float DP) {
+    public static float NORM(float M, float DP) { //1
         float random1 = rand.nextFloat();
         float random2 = rand.nextFloat();
         float Z = (float) (Math.sqrt((-2 * Math.log((double) random1))) * Math.cos(2 * Math.PI * random2));
@@ -172,7 +271,7 @@ public abstract class Utilities {
         return rand.nextFloat() * 10;
     }
 
-    public static float TRIA(float a, float b, float c) {
+    public static float TRIA(float a, float b, float c) { //2
         float random = rand.nextFloat();
         if (random < ((c - a) / (b - a))) {
             return (float) (a + Math.sqrt(random * (b - a) * (c - a)));
@@ -181,11 +280,11 @@ public abstract class Utilities {
         }
     }
 
-    public static float UNIF(float a, float b) {
+    public static float UNIF(float a, float b) { //3
         return a + rand.nextFloat() * (b - a);
     }
 
-    public static float CONST(float cons) {
+    public static float CONS(float cons) { //4
         return cons;
     }
 

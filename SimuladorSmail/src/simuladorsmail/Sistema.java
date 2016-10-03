@@ -28,9 +28,15 @@ public class Sistema {
         smr = new ServiceModule(this);
         ee = new EndEntity();
 
-        createEvent(Evento.tipoDeEvento.CRIACAOL, Utilities.EXPO(0.5f), null);
-        createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.EXPO(0.6f), null);
-
+        GUI.Input input = new GUI.Input();
+        input.setVisible(true);
+        input.setSis(this);
+    }
+    
+    public void start(){
+        createEvent(Evento.tipoDeEvento.CRIACAOL, Utilities.nextCreationTime(true), null);
+        createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.nextCreationTime(false), null);
+        
         while (!filaDeEventos.isEmpty()) {
             System.out.println("TempoAtual :" + Utilities.getTempo());
             printFilaDeEventos();
@@ -110,4 +116,17 @@ public class Sistema {
             return smr;
         }
     }
+    
+    public void setTECL(int eq, float[] param){
+        Utilities.setCreationLTimes(eq, param);
+    }
+    
+    public void setTECR(int eq, float[] param){
+        Utilities.setCreationRTimes(eq, param);
+    }
+    
+    public void setProps(float[] props){
+       Utilities.setProps(props);
+    }
+    
 }

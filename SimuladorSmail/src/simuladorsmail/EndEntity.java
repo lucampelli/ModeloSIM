@@ -20,8 +20,32 @@ total e de cada tipo de entidade e seus resultados.
 
 public class EndEntity extends Module{
 
+    //ints
+    private int numLeituras = 0;
+    private int somaDosTemposTotais = 0;
+    private int somaDosAdiamentos = 0;
+    private int somaDosTemposNaFila = 0;
+    
+    
+    
+    //floats
+    private float mediaDosTemposTotais = 0;
+    private float mediaDosAdiamentos = 0;
+    private float mediaDosTemposNaFila = 0;
+    
+    
     public void Register(Entity e){
+        numLeituras++;
+        somaDosTemposTotais += e.getTempoNoSistema();
+        somaDosTemposNaFila += e.getTempoFila();
+        somaDosAdiamentos += e.getAdiamentos();
         
+    }
+    
+    public void END(){
+        mediaDosTemposTotais = somaDosTemposTotais/numLeituras;
+        mediaDosAdiamentos = somaDosAdiamentos/numLeituras;
+        mediaDosTemposNaFila = somaDosTemposNaFila/numLeituras;
     }
 
 

@@ -35,23 +35,13 @@ public class StartEntity extends Module{
     
     public Entity createEvent(boolean local){
         Entity newE;
-        boolean random = rand.nextBoolean();
-        if(local){
-            if(random){
-                newE = new Entity('l','r');
-            } else {
-                newE = new Entity('l','l');
-            }
-            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.getTempo() + Utilities.EXPO(0.5f)), null);
+        String next = Utilities.nextCreation();
+        newE = new Entity(next.charAt(0),next.charAt(1));
+        if(next.charAt(0) == 'l'){
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.nextCreationTime(true)), null);
         } else {
-            if(random){
-                newE = new Entity('r','r');
-            } else {
-                newE = new Entity('r','l');
-            }
-            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOR,(Utilities.getTempo() + Utilities.EXPO(0.6f)), null);
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.nextCreationTime(false)), null);
         }
-        
         sisRef.createEvent(Evento.tipoDeEvento.SELECAO, Utilities.getTempo(), newE);
         
         return newE;
