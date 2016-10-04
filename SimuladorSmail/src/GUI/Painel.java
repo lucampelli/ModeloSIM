@@ -5,11 +5,12 @@
  */
 package GUI;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import simuladorsmail.Utilities;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,6 +35,11 @@ public class Painel extends JPanel implements Runnable{
     private int FPS = 60;
     private long tempo = 1000 / FPS;
 
+    private int ServLocOcc;
+    private int ServLocQ;
+    private int ServRemOcc;
+    private int ServRemQ;
+    
     public Painel() {
         super();
         setPreferredSize(new Dimension(LARGURA, ALTURA));
@@ -45,11 +51,15 @@ public class Painel extends JPanel implements Runnable{
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        
+        
+        
     }
 
     public void init() {
         this.image = new BufferedImage(LARGURA, ALTURA, BufferedImage.TYPE_INT_RGB);
         this.g = (Graphics2D) image.getGraphics();
+        g.setColor(Color.red);
     }
 
     @Override
@@ -68,6 +78,10 @@ public class Painel extends JPanel implements Runnable{
 
     public void draw(Graphics2D g) {
         g.drawImage(BI, 0, 0, null);
+        g.drawString(ServLocOcc + "", 435, 50);
+        g.drawString(ServLocQ + "", 500, 150);
+        g.drawString(ServRemOcc + "", 435, 315);
+        g.drawString(ServRemQ + "", 500, 350);
     }
 
     public void drawToScreen() {
