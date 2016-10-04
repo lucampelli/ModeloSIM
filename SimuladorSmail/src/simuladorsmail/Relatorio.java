@@ -65,7 +65,7 @@ public abstract class Relatorio {
             //Fechando arquivo:
             arq.close();
             
-            //java.awt.Desktop.getDesktop().open(new File("Relatorio.txt"));//Testar//
+            java.awt.Desktop.getDesktop().open(new File("Relatorio.txt"));//Testar//
             
         } catch (IOException ex) {
             System.out.printf("Relatório.TXT não pode ser gerado!");

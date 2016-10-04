@@ -52,8 +52,14 @@ public abstract class Utilities {
         timeUnit = newUnit;
     }
 
-    public static unit getUnit() {
-        return timeUnit;
+    public static int getUnit() {
+        if(timeUnit == unit.HORAS){
+            return 3600;
+        }
+        if(timeUnit == unit.MINUTOS){
+            return 60;
+        }
+        return 1;
     }
 
     public static void setDestiny(Entity e) {
@@ -293,5 +299,4 @@ public abstract class Utilities {
     public static float CONS(float cons) { //4
         return cons;
     }
-
 }

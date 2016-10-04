@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Sistema {
+public class Sistema implements Runnable{
 
     private ArrayList<Evento> filaDeEventos;
     private StartEntity se;
@@ -33,7 +33,8 @@ public class Sistema {
         inicial.setSis(this);
     }
     
-    public void start(){
+    @Override
+    public void run(){
         createEvent(Evento.tipoDeEvento.CRIACAOL, Utilities.nextCreationTime(true), null);
         createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.nextCreationTime(false), null);
         
@@ -44,6 +45,8 @@ public class Sistema {
             RunEvent(atual);
         }
     }
+    
+    
 
     public void createEvent(Evento.tipoDeEvento tipo, float tempo, Entity e) {
         filaDeEventos.add(new Evento(tipo, tempo, e));
@@ -101,6 +104,9 @@ public class Sistema {
             ee.Register(e.getEntity());
             System.out.println("Dispose Event");
         }
+        if(e.getTipo() == Evento.tipoDeEvento.TERMINO){
+            END();
+        }
     }
 
     public void printFilaDeEventos() {
@@ -114,6 +120,12 @@ public class Sistema {
             return sml;
         } else {
             return smr;
+        }
+    }
+    
+    public void setTempoSimulacao(float time){
+        if(time != 0){
+            createEvent(Evento.tipoDeEvento.TERMINO, time, null);
         }
     }
     

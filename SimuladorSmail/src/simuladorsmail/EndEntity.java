@@ -43,11 +43,25 @@ public class EndEntity extends Module{
     }
     
     public void END(){
-        float valores[] = new float [13];
-        Relatorio.geraRelatorio(valores);
+        
         mediaDosTemposTotais = somaDosTemposTotais/numLeituras;
         mediaDosAdiamentos = somaDosAdiamentos/numLeituras;
         mediaDosTemposNaFila = somaDosTemposNaFila/numLeituras;
+        float valores[] = new float [13];
+        valores[0] = 0;
+        valores[1] = 0;
+        valores[2] = 0;
+        valores[3] = 0;
+        valores[4] = 0;
+        valores[5] = 0;
+        valores[6] = 0;
+        valores[7] = somaDosTemposTotais;
+        valores[8] = numLeituras;
+        valores[9] = 0;
+        valores[10] = 0;
+        valores[11] = 0;
+        valores[12] = 0;
+        Relatorio.geraRelatorio(valores);
         
     }
 

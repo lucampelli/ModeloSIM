@@ -40,7 +40,7 @@ public class StartEntity extends Module{
         if(next.charAt(0) == 'l'){
             sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.nextCreationTime(true)), null);
         } else {
-            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOL,(Utilities.nextCreationTime(false)), null);
+            sisRef.createEvent(Evento.tipoDeEvento.CRIACAOR,(Utilities.nextCreationTime(false)), null);
         }
         sisRef.createEvent(Evento.tipoDeEvento.SELECAO, Utilities.getTempo(), newE);
         

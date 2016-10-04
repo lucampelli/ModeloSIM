@@ -13,7 +13,7 @@ public class Evento {
 
     public static enum tipoDeEvento {
 
-        CRIACAOL, CRIACAOR, SELECAO, SERVICO, SAIDA, FINAL
+        CRIACAOL, CRIACAOR, SELECAO, SERVICO, SAIDA, FINAL, TERMINO
     }
     private float tempo = 0;
     private tipoDeEvento tipo;

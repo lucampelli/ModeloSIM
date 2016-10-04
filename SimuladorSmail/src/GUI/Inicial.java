@@ -17,6 +17,7 @@ public class Inicial extends javax.swing.JFrame {
      * Creates new form Inicial
      */
     Sistema sis;
+    Thread thread;
     
     public Inicial() {
         initComponents();
@@ -103,7 +104,10 @@ public class Inicial extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        sis.start();
+        if(thread == null){
+            thread = new Thread(sis);
+        }
+        thread.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

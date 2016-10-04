@@ -29,11 +29,13 @@ public class Entity {
     private boolean sucesso;
     private float tempoNoSistema;
     private float tempoEntradaNaFila;
+    private float tempoEntradaNoSistema;
     private float tempoNaFila;
 
     public Entity(char destinatario, char remetente) {
         this.destinatario = destinatario;
         this.remetente = remetente;
+        this.tempoEntradaNoSistema = Utilities.getTempo();
     }
 
     public char getDestinatario() {
