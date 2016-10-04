@@ -8,10 +8,11 @@ package simuladorsmail;
 //For testing purposes, or maybe not
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import GUI.Painel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Sistema implements Runnable{
+public class Sistema implements Runnable {
 
     private ArrayList<Evento> filaDeEventos;
     private StartEntity se;
@@ -19,6 +20,8 @@ public class Sistema implements Runnable{
     private ServiceModule sml;
     private ServiceModule smr;
     private EndEntity ee;
+    private Painel painel;
+    private int spd = 0;
 
     public Sistema() {
         filaDeEventos = new ArrayList<Evento>();
@@ -32,12 +35,12 @@ public class Sistema implements Runnable{
         inicial.setVisible(true);
         inicial.setSis(this);
     }
-    
+
     @Override
-    public void run(){
+    public void run() {
         createEvent(Evento.tipoDeEvento.CRIACAOL, Utilities.nextCreationTime(true), null);
         createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.nextCreationTime(false), null);
-        
+
         while (!filaDeEventos.isEmpty()) {
             System.out.println("TempoAtual :" + Utilities.getTempo());
             printFilaDeEventos();
@@ -45,8 +48,6 @@ public class Sistema implements Runnable{
             RunEvent(atual);
         }
     }
-    
-    
 
     public void createEvent(Evento.tipoDeEvento tipo, float tempo, Entity e) {
         filaDeEventos.add(new Evento(tipo, tempo, e));
@@ -89,7 +90,7 @@ public class Sistema implements Runnable{
                 smr.createEventEntrada(e.getEntity());
                 System.out.println("Entry Event Remote");
             }
-            
+
         }
         if (e.getTipo() == Evento.tipoDeEvento.SAIDA) {
             if (e.getEntity().getDestinatario() == 'l') {
@@ -104,8 +105,14 @@ public class Sistema implements Runnable{
             ee.Register(e.getEntity());
             System.out.println("Dispose Event");
         }
-        if(e.getTipo() == Evento.tipoDeEvento.TERMINO){
+        if (e.getTipo() == Evento.tipoDeEvento.TERMINO) {
             END();
+        }
+        
+        try {
+            sleep(spd);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -122,45 +129,64 @@ public class Sistema implements Runnable{
             return smr;
         }
     }
-    
-    public void setTempoSimulacao(float time){
-        if(time != 0){
+
+    public void setTempoSimulacao(float time) {
+        if (time != 0) {
             createEvent(Evento.tipoDeEvento.TERMINO, time, null);
         }
     }
     
-    public void setTECL(int eq, float[] param){
+    public void setDelay(int delay){
+        if(delay == 0){
+            spd = 500;
+        } else
+        if(delay == 1){
+            spd = 750;
+        } else {
+            spd = 1000;
+        }
+    }
+
+    public void setPanel(Painel panel) {
+        painel = panel;
+    }
+
+    public void setTECL(int eq, float[] param) {
         Utilities.setCreationLTimes(eq, param);
     }
-    
-    public void setTECR(int eq, float[] param){
+
+    public void setTECR(int eq, float[] param) {
         Utilities.setCreationRTimes(eq, param);
     }
-    
-    public void setProps(float[] props){
-       Utilities.setProps(props);
+
+    public void setProps(float[] props) {
+        Utilities.setProps(props);
     }
-    
-    public void setSucPropsLL(float[] prop){
+
+    public void setSucPropsLL(float[] prop) {
         Utilities.setSucPropsLL(prop);
     }
-    public void setSucPropsLR(float[] prop){
+
+    public void setSucPropsLR(float[] prop) {
         Utilities.setSucPropsLR(prop);
     }
-    public void setSucPropsRL(float[] prop){
+
+    public void setSucPropsRL(float[] prop) {
         Utilities.setSucPropsRL(prop);
     }
-    public void setSucPropsRR(float[] prop){
+
+    public void setSucPropsRR(float[] prop) {
         Utilities.setSucPropsRR(prop);
     }
-    public void setServerNum(int num){
+
+    public void setServerNum(int num) {
         sml.setServerNum(num);
         smr.setServerNum(num);
     }
-    
-    public void END(){
+
+    public void END() {
         ee.END();
         System.exit(0);
     }
-    
+
 }
