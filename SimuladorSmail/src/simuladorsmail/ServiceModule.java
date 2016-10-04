@@ -91,4 +91,11 @@ public class ServiceModule extends Module {
     public void setServerNum(int num){
         this.quantidadeDeServidores = num;
     }
+    
+    public int getFilaSize(){
+        return filaDeServico.size();
+    }
+    public int getOcupacao(){
+        return servidoresOcupados;
+    }
 }

@@ -42,8 +42,8 @@ public class Sistema implements Runnable {
         createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.nextCreationTime(false), null);
 
         while (!filaDeEventos.isEmpty()) {
-            System.out.println("TempoAtual :" + Utilities.getTempo());
-            printFilaDeEventos();
+            //System.out.println("TempoAtual :" + Utilities.getTempo());
+            //printFilaDeEventos();
             Evento atual = getNextEvent();
             RunEvent(atual);
         }
@@ -110,6 +110,8 @@ public class Sistema implements Runnable {
         }
         
         try {
+            Painel.setLStuff(sml.getFilaSize(), sml.getOcupacao());
+            Painel.setRStuff(smr.getFilaSize(), smr.getOcupacao());
             sleep(spd);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -138,12 +140,12 @@ public class Sistema implements Runnable {
     
     public void setDelay(int delay){
         if(delay == 0){
-            spd = 500;
+            spd = 100;
         } else
         if(delay == 1){
-            spd = 750;
+            spd = 500;
         } else {
-            spd = 1000;
+            spd = 800;
         }
     }
 

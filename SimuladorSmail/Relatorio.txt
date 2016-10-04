@@ -1,5 +1,5 @@
 -----Relatório Simulação SMAIL:-----
-Número de mensagens despachadas: 1851.0
+Número de mensagens despachadas: 1866.0
 Número de mensagens geradas: 0.0
 Número de mensagens por tipo: LL: 0.0 LR: 0.0 RR: 0.0 RL: 0.0
 Número de mensagens ao longo do tempo Máximo: 0.0 Médio: 0.0

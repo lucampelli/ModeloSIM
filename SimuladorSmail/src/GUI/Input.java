@@ -19,22 +19,26 @@ import simuladorsmail.Utilities;
 public class Input extends JFrame {
 
     Sistema sis;
-    
+
     public Input() {
         super("Configuration");
         initComponents();
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        buttonGroup1.add(jRadioButton1);
+        buttonGroup1.add(jRadioButton2);
+        buttonGroup1.add(jRadioButton3);
+        buttonGroup1.add(jRadioButton4);
     }
 
-    public void setSis(Sistema sys){
+    public void setSis(Sistema sys) {
         sis = sys;
     }
-    
-    public Sistema getSis (){
+
+    public Sistema getSis() {
         return sis;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,6 +48,8 @@ public class Input extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -92,7 +98,12 @@ public class Input extends JFrame {
         jLabel23 = new javax.swing.JLabel();
         jTextField21 = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
-        jTextField22 = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+
+        label1.setText("label1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -203,7 +214,13 @@ public class Input extends JFrame {
 
         jLabel24.setText("Velocidade da Simulação:");
 
-        jTextField22.setText("ULTRA");
+        jRadioButton1.setText("MEDIUM");
+
+        jRadioButton2.setText("ULTRA");
+
+        jRadioButton3.setText("SLOW");
+
+        jRadioButton4.setText("FAST");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,52 +229,36 @@ public class Input extends JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jSeparator1)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(172, 172, 172))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
-                    .addComponent(jSeparator1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(205, 205, 205))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(222, 222, 222)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel10)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(205, 205, 205))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(222, 222, 222)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel10)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel11)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -326,10 +327,36 @@ public class Input extends JFrame {
                                                 .addGap(22, 22, 22)
                                                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel24)
-                                .addGap(32, 32, 32)
-                                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +439,7 @@ public class Input extends JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,16 +447,21 @@ public class Input extends JFrame {
                     .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton3)
+                    .addComponent(jRadioButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                    .addComponent(jRadioButton1)
+                    .addComponent(jRadioButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jLabel19)
                     .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -437,35 +469,35 @@ public class Input extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        sis.setTECL((int)parseEQ(jTextField18.getText()), parseParams(jTextField18.getText()));
-        sis.setTECR((int)parseEQ(jTextField19.getText()), parseParams(jTextField19.getText()));
+        sis.setTECL((int) parseEQ(jTextField18.getText()), parseParams(jTextField18.getText()));
+        sis.setTECR((int) parseEQ(jTextField19.getText()), parseParams(jTextField19.getText()));
         float[] upperParams = new float[4];
         upperParams[0] = Float.parseFloat(jTextField1.getText()); //ll
         upperParams[1] = Float.parseFloat(jTextField2.getText()); //lr
         upperParams[2] = Float.parseFloat(jTextField3.getText()); //rl
         upperParams[3] = Float.parseFloat(jTextField4.getText()); //rr
         sis.setProps(upperParams);
-        
+
         float[] llProps = new float[3];
         llProps[0] = Float.parseFloat(jTextField5.getText());
         llProps[1] = Float.parseFloat(jTextField6.getText());
         llProps[2] = Float.parseFloat(jTextField7.getText());
-        
+
         float[] lrProps = new float[3];
         lrProps[0] = Float.parseFloat(jTextField9.getText());
         lrProps[1] = Float.parseFloat(jTextField10.getText());
         lrProps[2] = Float.parseFloat(jTextField8.getText());
-        
+
         float[] rlProps = new float[3];
         rlProps[0] = Float.parseFloat(jTextField13.getText());
         rlProps[1] = Float.parseFloat(jTextField12.getText());
         rlProps[2] = Float.parseFloat(jTextField11.getText());
-        
+
         float[] rrProps = new float[3];
         rrProps[0] = Float.parseFloat(jTextField14.getText());
         rrProps[1] = Float.parseFloat(jTextField15.getText());
         rrProps[2] = Float.parseFloat(jTextField16.getText());
-        
+
         try {
             checkSum(llProps);
             checkSum(lrProps);
@@ -474,35 +506,39 @@ public class Input extends JFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
-        
+
         sis.setSucPropsLL(llProps);
         sis.setSucPropsLR(lrProps);
         sis.setSucPropsRL(rlProps);
         sis.setSucPropsRR(rrProps);
-        
+
         sis.setServerNum(Integer.parseInt(jTextField17.getText()));
-        
+
         String unit = jTextField21.getText();
-        if(unit.equals("h")){
+        if (unit.equals("h")) {
             Utilities.setUnit(Utilities.unit.HORAS);
-        } else if (unit.equals("m")){
+        } else if (unit.equals("m")) {
             Utilities.setUnit(Utilities.unit.MINUTOS);
         } else {
             Utilities.setUnit(Utilities.unit.SEGUNDOS);
         }
-        
-        sis.setTempoSimulacao(Float.parseFloat(jTextField20.getText())*Utilities.getUnit());
-        
-        unit = jTextField22.getText();
-        if(unit.equals("SLOW")){
+
+        sis.setTempoSimulacao(Float.parseFloat(jTextField20.getText()) * Utilities.getUnit());
+
+        if(jRadioButton1.isSelected()){
             sis.setDelay(2);
-        } else if (unit.equals("MEDIUM")){
-            sis.setDelay(1);
-        } else if (unit.equals("FAST")){
+        }
+        if(jRadioButton2.isSelected()){
             sis.setDelay(0);
         }
+        if(jRadioButton3.isSelected()){
+            sis.setDelay(3);
+        }
+        if(jRadioButton4.isSelected()){
+            sis.setDelay(1);
+        }
         
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField19ActionPerformed
@@ -513,58 +549,58 @@ public class Input extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField21ActionPerformed
 
-    private void checkSum(float[] prop) throws Exception{
+    private void checkSum(float[] prop) throws Exception {
         float sum = 0;
-        for(int i = 0; i < prop.length; i++){
+        for (int i = 0; i < prop.length; i++) {
             sum += prop[i];
         }
-        if(sum != 100){
+        if (sum != 100) {
             throw new Exception("A proporção acumulada deve ser 1");
         }
     }
-    
-    private float parseEQ(String eq){
-        
+
+    private float parseEQ(String eq) {
+
         String[] splits = eq.split("\\(");
         splits[1] = splits[1].split("\\)")[0];
         String[] params = splits[1].split(",");
-        
+
         int eqs = 0;
-        if(splits[0].equals("EXPO")){
+        if (splits[0].equals("EXPO")) {
             eqs = 0;
         }
-        if(splits[0].equals("NORM")){
+        if (splits[0].equals("NORM")) {
             eqs = 1;
         }
-        if(splits[0].equals("TRIA")){
+        if (splits[0].equals("TRIA")) {
             eqs = 2;
         }
-        if(splits[0].equals("UNIF")){
+        if (splits[0].equals("UNIF")) {
             eqs = 3;
         }
-        if(splits[0].equals("CONS")){
+        if (splits[0].equals("CONS")) {
             eqs = 4;
         }
-        return  eqs;
+        return eqs;
     }
-    
-    private float[] parseParams(String eq){
-        
+
+    private float[] parseParams(String eq) {
+
         String[] splits = eq.split("\\(");
         splits[1] = splits[1].split("\\)")[0];
         String[] params = splits[1].split(",");
-        
+
         float[] param = new float[3];
         param[0] = Float.parseFloat(params[0]);
-        if(params.length > 1){
+        if (params.length > 1) {
             param[1] = Float.parseFloat(params[1]);
         }
-        if(params.length > 2){
+        if (params.length > 2) {
             param[2] = Float.parseFloat(params[2]);
         }
         return param;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -601,6 +637,7 @@ public class Input extends JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -626,6 +663,10 @@ public class Input extends JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
@@ -642,7 +683,6 @@ public class Input extends JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -650,5 +690,6 @@ public class Input extends JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

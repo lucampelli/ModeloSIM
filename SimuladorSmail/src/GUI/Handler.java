@@ -22,6 +22,7 @@ public class Handler extends JFrame{
         this.setSize(600, 800);
         p = new Painel();
         this.setContentPane(p);
+        new Thread(p).start();
         this.setVisible(true);
         this.pack();
         this.setLocationRelativeTo(null);

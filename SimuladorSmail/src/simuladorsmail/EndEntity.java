@@ -78,7 +78,7 @@ public class EndEntity extends Module {
 
         mediaDosTemposTotais = somaDosTemposTotais / numLeituras;
         mediaDosAdiamentos = somaDosAdiamentos / numLeituras;
-        float valores[] = new float[13];
+        float valores[] = new float[15];
         valores[0] = 0;
         valores[1] = 0;
         valores[2] = 0;

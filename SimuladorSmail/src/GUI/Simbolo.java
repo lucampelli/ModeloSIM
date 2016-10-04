@@ -20,9 +20,12 @@ public class Simbolo{
     private BufferedImage image;
     private int x;
     private int y;
+    private int dx;
+    private int dy;
     
+    private int[] dest; 
     
-    public Simbolo(int x, int y){
+    public Simbolo(int x, int y, int dx, int dy, int destx, int desty){
         try {
             image = ImageIO.read(getClass().getResourceAsStream("Entity.png"));
         } catch (IOException ex) {
@@ -31,14 +34,29 @@ public class Simbolo{
         
         this.x = x;
         this.y = y;
+        dest = new int[2];
+        dest[0] = destx;
+        dest[1] = desty;
     }
     
     public BufferedImage getImage(){
         return image;
     }
     
-    public void move(int x, int y){
-        this.x += x;
-        this.y += y;
+    public void move(){
+        this.x += dx;
+        this.y += dy;
+    }
+    
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
+    }
+    
+    public int[] getDest(){
+        return dest;
     }
 }
