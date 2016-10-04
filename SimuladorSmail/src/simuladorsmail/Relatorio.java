@@ -37,6 +37,7 @@ public abstract class Relatorio {
      tempo transito minimo |5, tempo de transito máximo |6, tempo de transito médio |7, 
      numero de mansagens despachadas |8,
      numero mensagens LL |9, numero mensagens LR |10, numero mensagens RR |11, numero mensagens RL |12
+     somaDosTemposNaFilaL |13, somaDosTemposNaFilaR |14
      ]
      */
 
@@ -61,7 +62,8 @@ public abstract class Relatorio {
             gravarArq.printf("%n");
             gravarArq.printf("Tempo de transito mínimo: "+valores[5]+" Máximo: "+valores[6]+" Médio: "+valores[7]);
             gravarArq.printf("%n");
-            
+            gravarArq.printf("Soma dos tempos nas filas do centro:  L: "+valores[13]+" R: "+valores[14]);
+            gravarArq.printf("%n");
             //Fechando arquivo:
             arq.close();
             
