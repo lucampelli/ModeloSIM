@@ -26,6 +26,8 @@ public class StartEntity extends Module{
     private Sistema sisRef;
     private Random rand;
     
+    private int quantidadeAtual = 0;
+    
     public StartEntity(Sistema sis){
         sisRef = sis;
         rand = new Random();
@@ -34,6 +36,7 @@ public class StartEntity extends Module{
     
     
     public Entity createEvent(boolean local){
+        quantidadeAtual ++;
         Entity newE;
         String next = Utilities.nextCreation();
         newE = new Entity(next.charAt(0),next.charAt(1));
@@ -46,6 +49,10 @@ public class StartEntity extends Module{
         
         return newE;
         
+    }
+    
+    public int getQuantidadeAtual (){
+        return quantidadeAtual;
     }
     
     

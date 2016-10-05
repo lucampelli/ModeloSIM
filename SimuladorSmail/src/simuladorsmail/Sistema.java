@@ -29,7 +29,7 @@ public class Sistema implements Runnable {
         rm = new ReceptModule(this);
         sml = new ServiceModule(this);
         smr = new ServiceModule(this);
-        ee = new EndEntity();
+        ee = new EndEntity(this);
 
         GUI.Inicial inicial = new GUI.Inicial();
         inicial.setVisible(true);
@@ -189,6 +189,10 @@ public class Sistema implements Runnable {
     public void END() {
         ee.END();
         System.exit(0);
+    }
+    
+    public StartEntity getStartEntity(){
+        return se;
     }
 
 }

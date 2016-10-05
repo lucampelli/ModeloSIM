@@ -29,17 +29,38 @@ public class EndEntity extends Module {
     private int lr = 0;
     private int rr = 0;
     private int rl = 0;
+    
+    private int maiorQuantidade = 0;
+    private int menorQuantidade = 0;
+    private int mediaQuantidades = 0;
+    private int Saidas = 0;
 
     //floats
     private float maiorTempo = 0;
     private float menorTempo = 0;
     private float mediaDosTemposTotais = 0;
     private float mediaDosAdiamentos = 0;
+    
+    private Sistema sis;
+    
+    public EndEntity(Sistema sis){
+        this.sis = sis;
+    }
 
     public void Register(Entity e) {
+        Saidas ++;
         numLeituras++;
         somaDosTemposTotais += e.getTempoNoSistema();
         somaDosAdiamentos += e.getAdiamentos();
+        
+        //Quantidade de entidades no sitema:
+        int quantidadeAtual = sis.getStartEntity().getQuantidadeAtual();
+        mediaQuantidades += quantidadeAtual; 
+        if((quantidadeAtual - Saidas) > maiorQuantidade){
+            maiorQuantidade = quantidadeAtual - Saidas; 
+        }
+        
+        //Tempo da entidade no sistema:
         if (e.getTempoNoSistema() > maiorTempo) {
             maiorTempo = e.getTempoNoSistema();
         }
@@ -78,10 +99,11 @@ public class EndEntity extends Module {
 
         mediaDosTemposTotais = somaDosTemposTotais / numLeituras;
         mediaDosAdiamentos = somaDosAdiamentos / numLeituras;
+        mediaQuantidades /= Saidas; 
         float valores[] = new float[15];
-        valores[0] = 0;
-        valores[1] = 0;
-        valores[2] = 0;
+        valores[0] = maiorQuantidade;
+        valores[1] = mediaQuantidades;
+        valores[2] = sis.getStartEntity().getQuantidadeAtual();
         valores[3] = 0;
         valores[4] = 0;
         valores[5] = menorTempo;
