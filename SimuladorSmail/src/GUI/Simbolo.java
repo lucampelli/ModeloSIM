@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -25,22 +26,24 @@ public class Simbolo{
     
     private int[] dest; 
     
-    public Simbolo(int x, int y, int dx, int dy, int destx, int desty){
+    public Simbolo(int[] xy, int[] dest, int sp){
         try {
             image = ImageIO.read(getClass().getResourceAsStream("Entity.png"));
         } catch (IOException ex) {
             Logger.getLogger(Simbolo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        this.x = x;
-        this.y = y;
+        this.x = xy[0];
+        this.y = xy[1];
         dest = new int[2];
-        dest[0] = destx;
-        dest[1] = desty;
+        dest[0] = dest[0];
+        dest[1] = dest[1];
+        dx = (dest[0] - x)/sp;
+        dy = (dest[1] - y)/sp;
     }
     
-    public BufferedImage getImage(){
-        return image;
+    public void draw(Graphics2D g){
+        g.drawImage(image, x, y, null);
     }
     
     public void move(){

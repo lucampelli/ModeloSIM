@@ -67,6 +67,8 @@ public class Painel extends JPanel implements Runnable{
         
         simbs = new ArrayList<Simbolo>();
         
+        simbs.add(new Simbolo(STARTOUT,RECEPTIN,2));
+        System.out.println(simbs.size());
     }
 
     public void init() {
@@ -86,6 +88,9 @@ public class Painel extends JPanel implements Runnable{
     }
 
     public void update() {
+        for(Simbolo s : simbs){
+            s.move();
+        }
     }
 
     public void draw(Graphics2D g) {
@@ -94,6 +99,9 @@ public class Painel extends JPanel implements Runnable{
         g.drawString(ServLocQ + "", 513, 83);
         g.drawString(ServRemOcc + "", 435, 310);
         g.drawString(ServRemQ + "", 514, 362);
+        for(Simbolo s : simbs){
+            s.draw(g);
+        }
     }
 
     public void drawToScreen() {
