@@ -65,6 +65,7 @@ public class ServiceModule extends Module {
 
     public void createEventSaida(Entity entidade) {
         if (entidade.getFalha() || entidade.getSucesso()) {//Fracasso || Sucesso
+            entidade.setTempoNaFila(Utilities.getTempo());
             sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), entidade);//Enviar para EndEntity
             servidoresOcupados--;
             somatorioQuantidades += servidoresOcupados;
@@ -81,6 +82,7 @@ public class ServiceModule extends Module {
             return;
         }
         if (entidade.getAdiamento()) {//Adiamento
+            entidade.setTempoNaFila(Utilities.getTempo());
             entidade.addAdiamentos();
             createEventEntrada(entidade);
             Utilities.setDestiny(entidade);

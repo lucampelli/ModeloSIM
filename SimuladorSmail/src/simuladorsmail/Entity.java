@@ -27,7 +27,6 @@ public class Entity {
     private boolean adiamento;
     private boolean falha;
     private boolean sucesso;
-    private float tempoNoSistema;
     private float tempoEntradaNaFila;
     private float tempoEntradaNoSistema;
     private float tempoNaFila;
@@ -63,7 +62,7 @@ public class Entity {
     }
 
     public float getTempoNoSistema() {
-        return tempoNoSistema;
+        return Utilities.getTempo() - tempoEntradaNoSistema;
     }
 
     public float getTempoFila() {
@@ -94,14 +93,6 @@ public class Entity {
         sucesso = true;
     }
 
-    public void setTempoNoSistema(float tempo) {
-        tempoNoSistema = tempo;
-    }
-
-    public void addTempoNoSistema(float tempo) {
-        tempoNoSistema += tempo;
-    }
-
     public void setTempoEntradaFila(float tempo) {
         tempoEntradaNaFila = tempo;
     }
@@ -110,6 +101,6 @@ public class Entity {
         if (tempoEntradaNaFila == 0) {
             return;
         }
-        tempoNaFila += tempo - tempoEntradaNaFila;
+        tempoNaFila += (tempo - tempoEntradaNaFila);
     }
 }

@@ -1,7 +1,15 @@
 -----Relatório Simulação SMAIL:-----
-Número de mensagens despachadas: 1899.0
-Número de mensagens geradas: 1899.0
-Número de mensagens por tipo: LL: 941.0 LR: 467.0 RR: 204.0 RL: 287.0
-Número de mensagens ao longo do tempo Máximo: 5.0 Médio: 950.0
-Tempo de transito mínimo: 0.0 Máximo: 0.0 Médio: 0.0
-Soma dos tempos nas filas do centro:  L: 0.0 R: 0.0
+
+
+Número de mensagens despachadas: 3120.0
+
+Número de mensagens geradas: 3121.0
+
+Número de mensagens por tipo: LL: 1550.0 LR: 801.0 RR: 301.0 RL: 468.0
+
+Número de mensagens ao longo do tempo Máximo: 3.0 Médio: 0.3673077
+
+Tempo de transito mínimo: 0.3199463 Máximo: 1.3258057 Médio: 0.36148968
+
+Soma dos tempos nas filas do centro:  L: 227.6986 R: 35.00348
+

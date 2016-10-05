@@ -21,45 +21,45 @@ public class EndEntity extends Module {
 
     //ints
     private int numLeituras = 0;
-    private int somaDosTemposTotais = 0;
+    
     private int somaDosAdiamentos = 0;
-    private int somaDosTemposNaFilaL = 0;
-    private int somaDosTemposNaFilaR = 0;
+    
     private int ll = 0;
     private int lr = 0;
     private int rr = 0;
     private int rl = 0;
-    
+
     private int maiorQuantidade = 0;
     private int menorQuantidade = 0;
-    private int mediaQuantidades = 0;
-    private int Saidas = 0;
+    
+    private float mediaQuantidades = 0;
 
-    //floats
     private float maiorTempo = 0;
-    private float menorTempo = 0;
+    private float menorTempo = 1000000;
     private float mediaDosTemposTotais = 0;
-    private float mediaDosAdiamentos = 0;
     
+    private float somaDosTemposTotais = 0;
+    private float somaDosTemposNaFilaL = 0;
+    private float somaDosTemposNaFilaR = 0;
+
     private Sistema sis;
-    
-    public EndEntity(Sistema sis){
+
+    public EndEntity(Sistema sis) {
         this.sis = sis;
     }
 
     public void Register(Entity e) {
-        Saidas ++;
         numLeituras++;
         somaDosTemposTotais += e.getTempoNoSistema();
         somaDosAdiamentos += e.getAdiamentos();
-        
+
         //Quantidade de entidades no sitema:
-        int quantidadeAtual = sis.getStartEntity().getQuantidadeAtual();
-        mediaQuantidades += quantidadeAtual; 
-        if((quantidadeAtual - Saidas) > maiorQuantidade){
-            maiorQuantidade = quantidadeAtual - Saidas; 
+        int quantidadeAtual = sis.getStartEntity().getQuantidadeAtual() - numLeituras;
+        mediaQuantidades += quantidadeAtual;
+        if (quantidadeAtual > maiorQuantidade) {
+            maiorQuantidade = quantidadeAtual;
         }
-        
+
         //Tempo da entidade no sistema:
         if (e.getTempoNoSistema() > maiorTempo) {
             maiorTempo = e.getTempoNoSistema();
@@ -98,24 +98,23 @@ public class EndEntity extends Module {
     public void END() {
 
         mediaDosTemposTotais = somaDosTemposTotais / numLeituras;
-        mediaDosAdiamentos = somaDosAdiamentos / numLeituras;
-        mediaQuantidades /= Saidas; 
+        mediaQuantidades = mediaQuantidades / numLeituras;
         float valores[] = new float[15];
         valores[0] = maiorQuantidade;
         valores[1] = mediaQuantidades;
         valores[2] = sis.getStartEntity().getQuantidadeAtual();
-        valores[3] = sis.getSeviceModuleL().getSomatorioQuantidades()/Utilities.getTempo();
-        valores[4] = sis.getServiceModuleR().getSomatorioQuantidades()/Utilities.getTempo();
+        valores[3] = sis.getSeviceModuleL().getSomatorioQuantidades() / Utilities.getTempo();
+        valores[4] = sis.getServiceModuleR().getSomatorioQuantidades() / Utilities.getTempo();
         valores[5] = menorTempo;
         valores[6] = maiorTempo;
-        valores[7] = somaDosTemposTotais;
+        valores[7] = mediaDosTemposTotais;
         valores[8] = numLeituras;
         valores[9] = ll;
         valores[10] = lr;
         valores[11] = rr;
         valores[12] = rl;
-        valores[13] = somaDosTemposNaFilaL;
-        valores[14] = somaDosTemposNaFilaR;
+        valores[13] = somaDosTemposNaFilaL / (ll + lr);
+        valores[14] = somaDosTemposNaFilaR / (rr + rl);
         Relatorio.geraRelatorio(valores);
 
     }
