@@ -194,5 +194,13 @@ public class Sistema implements Runnable {
     public StartEntity getStartEntity(){
         return se;
     }
+    
+    public ServiceModule getSeviceModuleL (){
+        return sml;
+    }
+    
+    public ServiceModule getServiceModuleR (){
+        return smr;
+    }
 
 }

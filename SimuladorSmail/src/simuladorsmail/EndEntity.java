@@ -104,8 +104,8 @@ public class EndEntity extends Module {
         valores[0] = maiorQuantidade;
         valores[1] = mediaQuantidades;
         valores[2] = sis.getStartEntity().getQuantidadeAtual();
-        valores[3] = 0;
-        valores[4] = 0;
+        valores[3] = sis.getSeviceModuleL().getSomatorioQuantidades()/Utilities.getTempo();
+        valores[4] = sis.getServiceModuleR().getSomatorioQuantidades()/Utilities.getTempo();
         valores[5] = menorTempo;
         valores[6] = maiorTempo;
         valores[7] = somaDosTemposTotais;

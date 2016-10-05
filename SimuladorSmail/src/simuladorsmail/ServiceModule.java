@@ -40,6 +40,8 @@ public class ServiceModule extends Module {
     private int quantidadeDeServidores = 10;
     private ArrayList<Entity> filaDeServico;
     private Sistema sisRef;
+    
+    public int somatorioQuantidades = 0;
 
     public ServiceModule(Sistema sis) {
         sisRef = sis;
@@ -53,6 +55,7 @@ public class ServiceModule extends Module {
             entidade.setTempoNaFila(Utilities.getTempo());
             sisRef.createEvent(Evento.tipoDeEvento.SAIDA, Utilities.getTempo() + ts, entidade);
             servidoresOcupados++;
+            somatorioQuantidades += servidoresOcupados;
         } else {
             //InsereNaFila
             entidade.setTempoEntradaFila(Utilities.getTempo()); //Passar tempo atual!
@@ -64,6 +67,7 @@ public class ServiceModule extends Module {
         if (entidade.getFalha() || entidade.getSucesso()) {//Fracasso || Sucesso
             sisRef.createEvent(Evento.tipoDeEvento.FINAL, Utilities.getTempo(), entidade);//Enviar para EndEntity
             servidoresOcupados--;
+            somatorioQuantidades += servidoresOcupados;
             if (!filaDeServico.isEmpty()) {
                 sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), filaDeServico.remove(0));
             }
@@ -97,5 +101,9 @@ public class ServiceModule extends Module {
     }
     public int getOcupacao(){
         return servidoresOcupados;
+    }
+    
+    public int getSomatorioQuantidades(){
+        return somatorioQuantidades;
     }
 }
