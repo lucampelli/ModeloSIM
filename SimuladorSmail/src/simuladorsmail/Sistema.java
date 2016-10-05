@@ -72,38 +72,38 @@ public class Sistema implements Runnable {
     public void RunEvent(Evento e) {
         if (e.getTipo() == Evento.tipoDeEvento.CRIACAOL) {
             se.createEvent(true);
-            System.out.println("Criacao Local");
+            //System.out.println("Criacao Local");
         }
         if (e.getTipo() == Evento.tipoDeEvento.CRIACAOR) {
             se.createEvent(false);
-            System.out.println("Criacao Remoto");
+            //System.out.println("Criacao Remoto");
         }
         if (e.getTipo() == Evento.tipoDeEvento.SELECAO) {
             rm.createEvent(e.getEntity());
-            System.out.println("Receipt Event");
+            //System.out.println("Receipt Event");
         }
         if (e.getTipo() == Evento.tipoDeEvento.SERVICO) {
             if (e.getEntity().getDestinatario() == 'l') {
                 sml.createEventEntrada(e.getEntity());
-                System.out.println("Entry Event Local");
+                //System.out.println("Entry Event Local");
             } else {
                 smr.createEventEntrada(e.getEntity());
-                System.out.println("Entry Event Remote");
+                //System.out.println("Entry Event Remote");
             }
 
         }
         if (e.getTipo() == Evento.tipoDeEvento.SAIDA) {
             if (e.getEntity().getDestinatario() == 'l') {
                 sml.createEventSaida(e.getEntity());
-                System.out.println("Exit Event Local");
+                //System.out.println("Exit Event Local");
             } else {
                 smr.createEventSaida(e.getEntity());
-                System.out.println("Exit Event Remote");
+                //System.out.println("Exit Event Remote");
             }
         }
         if (e.getTipo() == Evento.tipoDeEvento.FINAL) {
             ee.Register(e.getEntity());
-            System.out.println("Dispose Event");
+            //System.out.println("Dispose Event");
         }
         if (e.getTipo() == Evento.tipoDeEvento.TERMINO) {
             END();
@@ -112,6 +112,7 @@ public class Sistema implements Runnable {
         try {
             Painel.setLStuff(sml.getFilaSize(), sml.getOcupacao());
             Painel.setRStuff(smr.getFilaSize(), smr.getOcupacao());
+            Painel.setWays(countEvents());
             sleep(spd);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
@@ -139,12 +140,13 @@ public class Sistema implements Runnable {
     }
     
     public void setDelay(int delay){
-        if(delay == 0){
+        if(delay == 1){
             spd = 100;
         } else
-        if(delay == 1){
+        if(delay == 2){
             spd = 500;
-        } else {
+        } else
+        if(delay == 3){
             spd = 800;
         }
     }
@@ -201,6 +203,26 @@ public class Sistema implements Runnable {
     
     public ServiceModule getServiceModuleR (){
         return smr;
+    }
+    
+    public int[] countEvents(){
+        int i[] = new int[4];
+        for(Evento e : filaDeEventos){
+            if(e.getTipo() == Evento.tipoDeEvento.SELECAO){
+                i[0]++;
+            }
+            if(e.getTipo() == Evento.tipoDeEvento.SERVICO){
+                if(e.getEntity().getDestinatario() =='l'){
+                    i[1]++;
+                } else {
+                    i[2]++;
+                }
+            }
+            if(e.getTipo() == Evento.tipoDeEvento.FINAL){
+                i[3]++;
+            }
+        }
+        return i;
     }
 
 }

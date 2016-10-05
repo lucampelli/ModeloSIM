@@ -22,7 +22,7 @@ public class Inicial extends javax.swing.JFrame {
     public Inicial() {
         super("Luca Campelli & Rodrigo Bonacossa's simulator");
         initComponents();
-        this.setLocationRelativeTo(null);
+        
     }
     
     public void setSis(Sistema sys){

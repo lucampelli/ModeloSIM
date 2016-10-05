@@ -71,12 +71,13 @@ public class ServiceModule extends Module {
             if (!filaDeServico.isEmpty()) {
                 sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), filaDeServico.remove(0));
             }
+            /*
             if(entidade.getFalha()){
                 System.out.println("Fail");
             }
             if(entidade.getSucesso()){
                 System.out.println("Sucesso");
-            }
+            }*/
             return;
         }
         if (entidade.getAdiamento()) {//Adiamento
@@ -87,7 +88,7 @@ public class ServiceModule extends Module {
             if (!filaDeServico.isEmpty()) {
                 sisRef.createEvent(Evento.tipoDeEvento.SERVICO, Utilities.getTempo(), filaDeServico.remove(0));
             }
-            System.out.println("Adiado");
+            //System.out.println("Adiado");
             return;
         }
     }

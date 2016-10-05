@@ -22,27 +22,17 @@ import javax.swing.JPanel;
  *
  * @author Luca
  */
-public class Painel extends JPanel implements Runnable{
-    
-    public static int[] STARTOUT = {120,20};
-    public static int[] RECEPTIN = {100,200};
-    public static int[] RECEPTOUT = {150,200};
-    public static int[] LSERVIN = {200,100};
-    public static int[] LSERVOUT = {250,100};
-    public static int[] RSERVIN = {200,200};
-    public static int[] RSERVOUT = {250,200};
-    public static int[] DISPOSEIN = {400,200};
-    public static int[] DISPOSEOUT = {450,200};
-    
-    public static int ALTURA = 500;
+public class Painel extends JPanel implements Runnable {
+
+    public static int ALTURA = 420;
     public static int LARGURA = 745;
-    
+
     private Thread thread;
     private BufferedImage image;
     private Graphics2D g;
-    
+
     private BufferedImage BI;
-    
+
     private int FPS = 60;
     private long tempo = 1000 / FPS;
 
@@ -50,9 +40,11 @@ public class Painel extends JPanel implements Runnable{
     private static int ServLocQ;
     private static int ServRemOcc;
     private static int ServRemQ;
-    
-    private ArrayList<Simbolo> simbs;
-    
+    private static int St2Re;
+    private static int Re2Sml;
+    private static int Re2Smr;
+    private static int Sm2Dis;
+
     public Painel() {
         super();
         setPreferredSize(new Dimension(LARGURA, ALTURA));
@@ -64,17 +56,13 @@ public class Painel extends JPanel implements Runnable{
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
-        simbs = new ArrayList<Simbolo>();
-        
-        simbs.add(new Simbolo(STARTOUT,RECEPTIN,2));
-        System.out.println(simbs.size());
     }
 
     public void init() {
         this.image = new BufferedImage(LARGURA, ALTURA, BufferedImage.TYPE_INT_RGB);
         this.g = (Graphics2D) image.getGraphics();
         g.setColor(Color.red);
+
     }
 
     @Override
@@ -88,9 +76,6 @@ public class Painel extends JPanel implements Runnable{
     }
 
     public void update() {
-        for(Simbolo s : simbs){
-            s.move();
-        }
     }
 
     public void draw(Graphics2D g) {
@@ -99,27 +84,36 @@ public class Painel extends JPanel implements Runnable{
         g.drawString(ServLocQ + "", 513, 83);
         g.drawString(ServRemOcc + "", 435, 310);
         g.drawString(ServRemQ + "", 514, 362);
-        for(Simbolo s : simbs){
-            s.draw(g);
-        }
+        g.drawString(St2Re + "", 132,125);
+        g.drawString(Re2Sml + "", 318,140);
+        g.drawString(Re2Smr + "", 325,305);
+        g.drawString(Sm2Dis + "", 600,200);
+        g.drawString("TempoAtual: " + Utilities.getTempo(),15, 390);
     }
 
     public void drawToScreen() {
         Graphics g2 = getGraphics();
         g2.drawImage(image, 0, 0, null);
     }
-    
-    public static void setLStuff(int LO, int LQ){
+
+    public static void setLStuff(int LO, int LQ) {
         ServLocOcc = LO;
         ServLocQ = LQ;
-        
+
     }
-    
-    public static void setRStuff(int RO, int RQ){
+
+    public static void setRStuff(int RO, int RQ) {
         ServRemOcc = RO;
         ServRemQ = RQ;
     }
-    
+
+    public static void setWays(int[] ways) {
+        St2Re = ways[0];
+        Re2Sml = ways[1];
+        Re2Smr = ways[2];
+        Sm2Dis = ways[3];
+    }
+
     @Override
     public void run() {
         this.init();
@@ -142,9 +136,11 @@ public class Painel extends JPanel implements Runnable{
                         thread.sleep(tempo - elapsed);
                     } else {
                         thread.sleep(tempo);
+
                     }
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Painel.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Painel.class
+                            .getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
