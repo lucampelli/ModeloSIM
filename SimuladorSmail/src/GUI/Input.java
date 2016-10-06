@@ -29,6 +29,7 @@ public class Input extends JFrame {
         buttonGroup1.add(jRadioButton2);
         buttonGroup1.add(jRadioButton3);
         buttonGroup1.add(jRadioButton4);
+        this.setResizable(false);
     }
 
     public void setSis(Sistema sys) {
