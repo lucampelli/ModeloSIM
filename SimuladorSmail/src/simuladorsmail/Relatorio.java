@@ -50,19 +50,27 @@ public abstract class Relatorio {
             //Gravar texto do arquivo:
             gravarArq.printf("-----Relatório Simulação SMAIL:-----");
             gravarArq.printf("%n");
+            gravarArq.printf("%n");
+            gravarArq.printf("%n");
             gravarArq.printf("Número de mensagens despachadas: "+valores[8]);
             gravarArq.printf("%n");
+            gravarArq.printf("%n");
             gravarArq.printf("Número de mensagens geradas: "+valores[2]);
+            gravarArq.printf("%n");
             gravarArq.printf("%n");
             gravarArq.printf("Número de mensagens por tipo: LL: "+valores[9]
                               +" LR: "+valores[10]+" RR: "+valores[11]+" RL: "+valores[12]);
             gravarArq.printf("%n");
+            gravarArq.printf("%n");
             gravarArq.printf("Número de mensagens ao longo do tempo Máximo: "+valores[0]
                               +" Médio: "+valores[1]);
             gravarArq.printf("%n");
+            gravarArq.printf("%n");
             gravarArq.printf("Tempo de transito mínimo: "+valores[5]+" Máximo: "+valores[6]+" Médio: "+valores[7]);
             gravarArq.printf("%n");
-            gravarArq.printf("Soma dos tempos nas filas do centro:  L: "+valores[13]+" R: "+valores[14]);
+            gravarArq.printf("%n");
+            gravarArq.printf("Média dos tempos nas filas do centro:  L: "+valores[13]+" R: "+valores[14]);
+            gravarArq.printf("%n");
             gravarArq.printf("%n");
             //Fechando arquivo:
             arq.close();
