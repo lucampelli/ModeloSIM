@@ -22,6 +22,7 @@ public class Sistema implements Runnable {
     private EndEntity ee;
     private Painel painel;
     private int spd = 0;
+    private boolean paused = false;
 
     public Sistema() {
         filaDeEventos = new ArrayList<Evento>();
@@ -42,10 +43,17 @@ public class Sistema implements Runnable {
         createEvent(Evento.tipoDeEvento.CRIACAOR, Utilities.nextCreationTime(false), null);
 
         while (!filaDeEventos.isEmpty()) {
-            //System.out.println("TempoAtual :" + Utilities.getTempo());
-            //printFilaDeEventos();
-            Evento atual = getNextEvent();
-            RunEvent(atual);
+            try {
+                //System.out.println("TempoAtual :" + Utilities.getTempo());
+                //printFilaDeEventos();
+                sleep(1);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Sistema.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(!paused){
+                Evento atual = getNextEvent();
+                RunEvent(atual);
+            }
         }
     }
 
@@ -188,6 +196,10 @@ public class Sistema implements Runnable {
         smr.setServerNum(num);
     }
 
+    public void pause(){
+        paused = !paused;
+    }
+    
     public void END() {
         ee.END();
         System.exit(0);

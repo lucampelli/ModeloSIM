@@ -84,16 +84,18 @@ public class Painel extends JPanel implements Runnable {
         g.drawString(ServLocQ + "", 513, 83);
         g.drawString(ServRemOcc + "", 435, 310);
         g.drawString(ServRemQ + "", 514, 362);
-        g.drawString(St2Re + "", 132,125);
-        g.drawString(Re2Sml + "", 318,140);
-        g.drawString(Re2Smr + "", 325,305);
-        g.drawString(Sm2Dis + "", 600,200);
-        g.drawString("TempoAtual: " + Utilities.getTempo(),15, 390);
+        g.drawString(St2Re + "", 132, 125);
+        g.drawString(Re2Sml + "", 318, 140);
+        g.drawString(Re2Smr + "", 325, 305);
+        g.drawString(Sm2Dis + "", 600, 200);
+        g.drawString("TempoAtual: " + Utilities.getTempo(), 15, 390);
     }
 
     public void drawToScreen() {
         Graphics g2 = getGraphics();
-        g2.drawImage(image, 0, 0, null);
+        if (g2 != null) {
+            g2.drawImage(image, 0, 0, null);
+        }
     }
 
     public static void setLStuff(int LO, int LQ) {
